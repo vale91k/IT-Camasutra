@@ -5,7 +5,7 @@ import Message from "./Message/Message";
 import TextArea from "./Textarea/TextArea";
 
 const Dialogs = props => {
-  
+  let kek = 3;
   let dialogsElements = props.dialogsPage.dialogs.map(d => (
     
 
