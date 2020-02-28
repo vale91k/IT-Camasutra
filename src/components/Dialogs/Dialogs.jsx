@@ -6,6 +6,7 @@ import TextArea from "./Textarea/TextArea";
 
 const Dialogs = props => {
   let kek = 3;
+  let spi4ki = 4;
   let dialogsElements = props.dialogsPage.dialogs.map(d => (
     
 
