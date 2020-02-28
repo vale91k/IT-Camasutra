@@ -1,0 +1,9 @@
+.message {
+  font-style: italic;
+}
+.rightMessage {
+  text-align: right;
+}
+.leftMessage {
+  text-align: left;
+}

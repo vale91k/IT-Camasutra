@@ -1,0 +1,41 @@
+.nav {
+  grid-area: n;
+  background-color: rgb(187,215,236);
+  padding: 20px;
+  width: 160px;
+  
+  
+}
+.item a {
+  color: #3f4257;
+  /* font-weight: bold; */
+  text-decoration: none;
+  font-size: 18px;
+}
+.item a.activeLink { 
+  font-size: 24px;
+  color: #ff5e3a;
+  font-weight: bold;
+}
+.fullPart {
+ 
+    display: flex;
+    flex-wrap: wrap;
+    border-right: 1px solid #3f4257;
+  }
+  .navbarPart {
+    grid-area: n;
+    background-color: rgb(187,215,236);
+
+  }
+  .sidebarPart {
+    grid-area: s;
+    background-color: rgb(187,215,236);
+
+
+  }
+  .otherPart {
+    grid-area: o;
+    background-color: rgb(187,215,236);
+width: 200px;
+  }

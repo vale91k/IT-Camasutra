@@ -1,0 +1,24 @@
+.item {
+  color:  #262835;
+}
+
+.item > .ava_message > .avatar {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: 2px solid #3f4257;
+  clear: left;
+  object-fit: cover;
+}
+.item > .like_count > .likes {
+  height: 35px;
+  width: 35px;
+float: left;
+}
+.item > .like_count .likesCount {
+  font-weight: bold;
+  padding-top: 15px;
+  padding-left: 40px;
+  color: #d7045e;
+  
+}

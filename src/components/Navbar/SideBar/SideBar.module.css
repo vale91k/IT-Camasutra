@@ -1,0 +1,41 @@
+.sideb {
+  background-color: #ff5e3a;
+  padding-top: 35px;
+  width: 200px;
+  height: 150px;
+  /* border-right: 1px solid #3f4257; */
+  border-top: 1px solid #3f4257;
+  border-bottom: 1px solid #3f4257;
+
+  }
+.headerBar {
+  font-size: 28px;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.flexible {
+  width: 200px;
+  display: flex;
+}
+.card {
+  padding-top: 15px;
+  padding-bottom: auto;
+  width: 66.6px;
+  height: 100px;
+}
+.card img {
+  display: block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 2px solid #3f4257;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
+}
+.namePerson {
+  margin-top: -15px;
+  text-align: center;
+letter-spacing: 0.5px;}
