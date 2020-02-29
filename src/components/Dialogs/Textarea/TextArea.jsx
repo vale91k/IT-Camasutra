@@ -4,19 +4,18 @@ import {addMessageActionCreator,  updateNewMessageTextActionCreator} from "../..
 
 
 const TextArea = props => {
-
+  
   let newMessageElement = React.createRef();
   
 
   let addMessage = () => {
-    props.dispatch(addMessageActionCreator())
-    props.dispatch(updateNewMessageTextActionCreator(''))
+    props.sendMessage()
   };
 
   let onMessageChange = () => {
-    let message = newMessageElement.current.value;
-    let action = updateNewMessageTextActionCreator(message);
-    props.dispatch(action);
+    let body = newMessageElement.current.value;
+    // body = message tipa
+    props.updateNewMessageBody(body);
   };
 
   return (
