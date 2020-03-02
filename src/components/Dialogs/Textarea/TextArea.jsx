@@ -1,22 +1,20 @@
 import React from "react";
 import s from "./TextArea.module.css";
-import {addMessageActionCreator,  updateNewMessageTextActionCreator} from "../../../redux/dialogs-reducer"  
+ 
 
 
 const TextArea = props => {
+ 
   
-  let newMessageElement = React.createRef();
-  
-
   let addMessage = () => {
-    props.sendMessage()
-  };
+    props.addMessage()
+  }
 
-  let onMessageChange = () => {
-    let body = newMessageElement.current.value;
-    // body = message tipa
-    props.updateNewMessageBody(body);
-  };
+  let onMessageChange = (text) => {
+    let message = text.target.value;
+    props.onMessageChange(message);
+  }
+  let newMessageElement = React.createRef();
 
   return (
     <div className={s.textarea}>
