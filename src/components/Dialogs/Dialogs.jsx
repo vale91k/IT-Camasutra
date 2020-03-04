@@ -15,11 +15,10 @@ const Dialogs = props => {
  
 
   let dialogsElements = props.state.dialogs.map(d => (
-    <DialogItem name={d.name} id={d.id} avatar={d.avatar} />
+    <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar} />
   ));
 
   let messagesElements = props.state.messages.map(m => (
-    <Message message={m.message} id={m.id} />
   ));
 // tyt dl9 text area
 
