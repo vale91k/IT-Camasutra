@@ -19,6 +19,7 @@ const Dialogs = props => {
   ));
 
   let messagesElements = props.state.messages.map(m => (
+    <Message key={m.id} message={m.message} id={m.id} />
   ));
 // tyt dl9 text area
 
