@@ -27,7 +27,7 @@ const Users = props => {
         id: 3,
         followed: true,
         fullName: "Peter",
-        status: "I am the greatest showman!",
+        status: "I am a showman!",
         location: { city: "St.Piterburg", country: "Russia" },
         avatar:
           "https://cdn.pixabay.com/photo/2015/11/16/14/43/cat-1045782__340.jpg"
@@ -66,12 +66,12 @@ const Users = props => {
   return (
     <div>
       {props.users.map(x => (
-        <div key={x.id}>
-          <span>
-            <div>
+        <div key={x.id} className={styles.userBar}>
+          <span className={styles.leftPart}>
+            <div >
               <img className={styles.avatar} src={x.avatar} />
             </div>
-            <div>
+            <div >
               {x.followed ? (
                 <button
                   onClick={ () => {
@@ -91,14 +91,14 @@ const Users = props => {
               )}
             </div>
           </span>
-          <span>
-            <span>
-              <div>{x.fullName}</div>
-              <div>{x.status}</div>
+          <span className={styles.rightBar}>
+            <span className={styles.leftSideBar}>
+              <div className={styles.fullName}>{x.fullName}</div>
+              <div className={styles.status}>{x.status}</div>
             </span>
-            <span>
-              <div>{x.location.city}</div>
-              <div>{x.location.country}</div>
+            <span className={styles.rightsideBar}>
+              <div className={styles.city}>{x.location.city}</div>
+              <div className={styles.country}>{x.location.country}</div>
             </span>
           </span>
         </div>
