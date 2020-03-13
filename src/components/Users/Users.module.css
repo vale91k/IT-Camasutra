@@ -46,3 +46,7 @@
 .rightsideBar > .city {
   padding-bottom: 20px;
 }
+.selectedPage {
+  font-weight: bold;
+  font-size: 20px;
+}
