@@ -1,52 +1,31 @@
 import React from "react";
 import styles from "./Users.module.css";
-import * as Axios from "axios";
 import userPhoto from '../../assets/images/user.jpg'
 
-class Users extends React.Component {
 
-
-componentDidMount() {
-      Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then(Response => {
-        this.props.setUsers(Response.data.items)
-        
-        this.props.setTotalUsers(Response.data.totalCount)
-      })
-    }
-
-    onPageChanged = (pageNumber) => {
-this.props.setCurrentPage(pageNumber);
-
-Axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`).then(Response => {
-        this.props.setUsers(Response.data.items)
-       
-      })
-    }
-  
-  render() {
-let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
-console.log(this.props.totalUsersCount)
+let Users = (props) => {
+  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+console.log(props.totalUsersCount)
 
 let pages = [];
 for (let i =1; i <= pagesCount; i++) {
   pages.push(i)
 }
-
-    return (
-      <div>
+  return (
+  <div>
         <div>
           {pages.map(i => {
-             if ( i < 4 || i> pages.length -1 ) {
+             if ( i < 6 || i> pages.length -4 ) {
 
                return (<span 
-                onClick={() => this.onPageChanged(i)}
-                className={this.props.currentPage === i && styles.selectedPage}>{i}</span>
+                onClick={() => props.onPageChanged(i)}
+                className={props.currentPage === i && styles.selectedPage}>{i}</span>
                 )
                }})}
             
         </div>
         
-        {this.props.users.map(x => (
+        {props.users.map(x => (
           <div key={x.id} className={styles.userBar}>
             <span className={styles.leftPart}>
               <div >
@@ -56,7 +35,7 @@ for (let i =1; i <= pagesCount; i++) {
                 {x.followed ? (
                   <button
                     onClick={ () => {
-                      this.props.unfollow(x.id);
+                      props.unfollow(x.id);
                     }}
                   >
                     Follow
@@ -64,7 +43,7 @@ for (let i =1; i <= pagesCount; i++) {
                 ) : (
                   <button
                     onClick={() => {
-                      this.props.follow(x.id);
+                      props.follow(x.id);
                     }}
                   >
                     UnFollow
@@ -86,8 +65,8 @@ for (let i =1; i <= pagesCount; i++) {
           </div>
         ))}
       </div>
-    );
-  }
+                  )
+        
 }
 
 export default Users;
