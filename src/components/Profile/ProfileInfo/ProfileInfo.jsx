@@ -1,17 +1,31 @@
 import React from "react";
-import s from './ProfileInfo.module.css' ;
+import styles from './ProfileInfo.module.css' ;
+import userPhoto from '../../../assets/images/user.jpg'
 
 
+const ProfileInfo = (props) => {
 
-const ProfileInfo = () => {
   return (
-    <div className={s.content}>
-      <img
-        src="https://i.pinimg.com/originals/dc/ce/b1/dcceb1644c13f70559ab0fbce2f03d22.jpg"
-        alt="https://i1.ytimg.com/vi/SN3xlcjbvUo/maxresdefault.jpg"
+    <div className={styles.content}>
+<div className={styles.topPicture}>
+<img 
+        src='https://i.pinimg.com/originals/dc/ce/b1/dcceb1644c13f70559ab0fbce2f03d22.jpg'
+        alt="/"
       />
-      <div className={s.discription}>
-        Ava + description
+</div>
+     
+      <div className={styles.discription}>
+        <div className={styles.avatar}>
+        {props.profile.photos.small !== null ? <img src={props.profile.photos.small} /> : <img src={userPhoto} />}
+
+        </div>
+         <div>
+        Full Name: {props.profile.fullName}, 
+        <div className={styles.aboutMe}>
+        About Me: {props.profile.aboutMe}
+         </div>
+
+          </div>
         </div>
     
       </div>

@@ -6,7 +6,6 @@ import Post from "./Post/Post";
 const MyPosts = props => {
   
   
-  let newPostElement = React.createRef();
   let postsElements = props.posts.map(p => (
     <Post
       id={p.id}
@@ -21,8 +20,8 @@ const MyPosts = props => {
     props.addPost()
   };
 
-  let onPostChange = () => {
-    let text = newPostElement.current.value;
+  let onPostChange = (e) => {
+  let text = e.target.value;
     props.updateNewPostText(text)
   };
 
@@ -33,7 +32,6 @@ const MyPosts = props => {
         <div>
           <textarea
             onChange={onPostChange}
-            ref={newPostElement}
             value={props.newPostText}
           />
         </div>

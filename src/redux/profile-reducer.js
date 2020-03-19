@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
+const TOGGLE_ISFETCHING = "TOOGGLE_ISFETCHING";
 
 let initialState = {
   posts: [
@@ -18,12 +20,14 @@ let initialState = {
         "https://kittentoob.com/wp-content/uploads/2018/04/British-Shorthair-1-750x419.jpg"
     }
   ],
-  newPostText: ""
+  newPostText: "",
+  profile: null,
+  isFetching: false
 };
 
 const profileReducer = (state = initialState, action) => {
-  
   switch (action.type) {
+
     case ADD_POST: {
       let newPost = {
         id: 5,
@@ -32,21 +36,31 @@ const profileReducer = (state = initialState, action) => {
           "https://www.sciencealert.com/images/2019-12/processed/CatsHaveFacialExpressionsButHardToRead_600.jpg",
         likeCount: 1488
       };
-      return  { ...state, posts: [...state.posts, newPost] };
-
-  
+      return { ...state, posts: [...state.posts, newPost] };
     }
-    case UPDATE_NEW_POST_TEXT:
-      return  { ...state, newPostText: action.newText };
-    
-
+    case UPDATE_NEW_POST_TEXT: {
+      return { ...state, newPostText: action.newText };
+    }
+    case SET_USER_PROFILE: {
+      return { ...state, profile: action.profile };
+    }
+    case TOGGLE_ISFETCHING: {
+      return { ...state, isFetching: action.isFetching };
+    }
     default:
       return state;
   }
 };
+
 export const addPostActionCreator = () => ({ type: ADD_POST });
 export const updateNewPostTextActionCreator = text => ({
   type: UPDATE_NEW_POST_TEXT,
   newText: text
 });
+export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile});
+export const toogleIsFetching = isFetching => ({
+  type: TOGGLE_ISFETCHING,
+  isFetching
+});
+
 export default profileReducer;

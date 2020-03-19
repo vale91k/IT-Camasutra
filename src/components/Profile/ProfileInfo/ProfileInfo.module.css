@@ -1,4 +1,4 @@
-.content img {
+.topPicture img {
     width: 1000px;
     height: 150px;
     object-fit: cover;
@@ -9,4 +9,7 @@
   }
   .discription {
     padding: 10px;
+  }
+  .avatar img { 
+  height: 100px;
   }
