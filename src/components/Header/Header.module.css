@@ -8,3 +8,12 @@
   background-color: #ff5e3a;
   border-bottom: 1px solid #3f4257;
 }
+.login_block {
+  float: right;
+  padding-top: 15px;
+  padding-right: 20px;
+   color: white;
+}
+.login_block a {
+  color: white
+}

@@ -11,7 +11,7 @@ import TextArea from "./Textarea/TextArea";
 
 
 const Dialogs = props => {
-
+debugger;
  
 
   let dialogsElements = props.state.dialogs.map(d => (
