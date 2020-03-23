@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/user.jpg";
 import { NavLink } from "react-router-dom";
-import Axios from "axios";
+import * as Axios from "axios";
+import { UserAPI } from "../../api/api";
 
 let Users = props => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -40,20 +41,11 @@ let Users = props => {
               </NavLink>
             </div>
             <div>
-              {x.followed ? (
-                <button
+              {x.followed 
+              ?  <button
                   onClick={() => {
-
-
-                    Axios.delete(
-                      `https://social-network.samuraijs.com/api/1.0/follow/${x.id}`,
-                      {},
-                      { withCredentials: true,
-                      headers: {'API-KEY' : 'dc4d30d1-437c-4ddf-848a-188d7e3bdb54' }
-                      }
-                    )
-                    
-                    
+                    UserAPI.
+                    unfollowApi(x.id)
                     .then(Response => {
                       if (Response.data.resultCode === 0) {
                         props.unfollow(x.id);
@@ -63,16 +55,12 @@ let Users = props => {
                 >
                   Unfollow
                 </button>
-              ) : (
+               : (
                 <button
                   onClick={() => {
-                    Axios.post(
-                      `https://social-network.samuraijs.com/api/1.0/follow/${x.id}`,
-                      {},
-                      { withCredentials: true,
-                        headers: {"API-KEY" : 'dc4d30d1-437c-4ddf-848a-188d7e3bdb54' }
-                      } 
-                    ).then(Response => {
+                    UserAPI.
+                    followApi(x.id)
+                    .then(Response => {
                       if (Response.data.resultCode === 0) {
                         props.follow(x.id);
                       }

@@ -11,31 +11,29 @@ import { connect } from "react-redux";
 import * as Axios from "axios";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-
+import { UserAPI} from '../../api/api'
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.toogleIsFetching(true);
-    Axios.get(
-      `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {withCredentials : true}
-    ).then(Response => {
+    UserAPI.
+    getUsers(this.props.currentPage, this.props.pageSize)
+   .then(data => {
       this.props.toogleIsFetching(false);
 
-      this.props.setUsers(Response.data.items);
+      this.props.setUsers(data.items);
 
-      this.props.setTotalUsers(Response.data.totalCount);
+      this.props.setTotalUsers(data.totalCount);
     });
   }
 
   onPageChanged = pageNumber => {
     this.props.setCurrentPage(pageNumber);
     this.props.toogleIsFetching(true);
-
-    Axios.get(
-      `https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {withCredentials : true}
-    ).then(Response => {
+UserAPI.
+     getUsers(pageNumber, this.props.pageSize).then(data => {
       this.props.toogleIsFetching(false);
 
-      this.props.setUsers(Response.data.items);
+      this.props.setUsers(data.items);
     });
   };
 
