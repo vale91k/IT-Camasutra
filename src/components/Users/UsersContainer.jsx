@@ -5,7 +5,8 @@ import {
   setUsers,
   setCurrentPage,
   setTotalUsers,
-  toogleIsFetching
+  toggleIsFetching,
+  toggleIsFollowingProgress
 } from "../../redux/users-reducer";
 import { connect } from "react-redux";
 import * as Axios from "axios";
@@ -14,11 +15,11 @@ import Preloader from "../common/Preloader/Preloader";
 import { UserAPI} from '../../api/api'
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toogleIsFetching(true);
+    this.props.toggleIsFetching(true);
     UserAPI.
     getUsers(this.props.currentPage, this.props.pageSize)
    .then(data => {
-      this.props.toogleIsFetching(false);
+      this.props.toggleIsFetching(false);
 
       this.props.setUsers(data.items);
 
@@ -28,10 +29,10 @@ class UsersContainer extends React.Component {
 
   onPageChanged = pageNumber => {
     this.props.setCurrentPage(pageNumber);
-    this.props.toogleIsFetching(true);
+    this.props.toggleIsFetching(true);
 UserAPI.
      getUsers(pageNumber, this.props.pageSize).then(data => {
-      this.props.toogleIsFetching(false);
+      this.props.toggleIsFetching(false);
 
       this.props.setUsers(data.items);
     });
@@ -51,6 +52,8 @@ UserAPI.
             users={this.props.users}
             follow={this.props.follow}
             unfollow={this.props.unfollow}
+            toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
+            followingInProgress={this.props.followingInProgress}
           />
         )}
       </>
@@ -64,7 +67,8 @@ let mapStateToProps = state => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   };
 };
 
@@ -85,8 +89,8 @@ let mapStateToProps = state => {
 //     setTotalUsers: totalUsers => {
 //       dispatch(setTotalUsersAC(totalUsers));
 //     },
-//     toogleIsFetching: isFetching => {
-//       dispatch(toogleIsFetchingAC(isFetching));
+//     toggleIsFetching: isFetching => {
+//       dispatch(toggleIsFetchingAC(isFetching));
 //     }
 //   };
 // };
@@ -97,5 +101,6 @@ export default connect(mapStateToProps, {
   setUsers,
   setCurrentPage,
   setTotalUsers,
-  toogleIsFetching
+  toggleIsFetching,
+  toggleIsFollowingProgress
 })(UsersContainer);
