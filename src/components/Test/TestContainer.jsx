@@ -1,16 +1,18 @@
 import React from "react";
 import Test from './Test'
 import {connect} from 'react-redux'
-import {fetchingAC, isLoadingAC} from '../../redux/test-reducer'
+import {followedAC, isLoadingAC} from '../../redux/test-reducer'
 class TestContainer extends React.Component {
+  debugger
   render() {
     return (
       <div >
         <Test 
-        fetching={this.props.fetchingAC}
-        isFetching={this.props.isFetching}
+        followedAC={this.props.followedAC}
+        isFollowed={this.props.isFollowed}
         isLoading={this.props.isLoading}
         isLoadingAC={this.props.isLoadingAC}
+        test={this.props.test}
         />
       </div>
     )
@@ -20,8 +22,10 @@ class TestContainer extends React.Component {
 };
 const MapStatetoProps = state => {
   return {
-    isFetching: state.testPage.isFetching,
-    isLoading: state.testPage.isLoading
+    buttons: state.testPage.buttons,
+    isFollowed: state.testPage.isFollowed,
+    isLoading: state.testPage.isLoading,
+    test:state.testPage.test
   }
 }
-export default connect(MapStatetoProps, {fetchingAC, isLoadingAC})(TestContainer);
+export default connect(MapStatetoProps, {followedAC, isLoadingAC})(TestContainer);

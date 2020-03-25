@@ -1,30 +1,106 @@
 import React from "react";
 import ss from "./Test.module.css";
 
-const Test = (props) => {
+const Test = props => {
   
-let setToTrue = () => {
-  props.isLoadingAC(true)
-  
-  props.fetching(true)
-setTimeout(() => {
-  props.isLoadingAC(false)
-}, 5000);
-}
-let setToFalse = () => {
-  props.isLoadingAC(true)
-  
-  props.fetching(false)
-setTimeout(() => {
-  props.isLoadingAC(false)
-}, 5000);
-}
   return (
-  <div >
-    {props.isFetching ? 
-   (<button disabled={props.isLoading} onClick={setToFalse}>stoit True, budet false</button>) : (<button disabled={props.isLoading} onClick={setToTrue}>stoit false, budet true</button>) }
-   
-  </div>
-  )
+    <div>
+      
+        { props.isFollowed ? (
+          <button
+            disabled={props.isLoading.some(x => x === 1)}
+            onClick={() => {
+              props.isLoadingAC(true, 1);
+
+              props.followedAC(false);
+
+              props.isLoadingAC(false, 1);
+            }}
+          >
+            fetching = true lol
+          </button>
+        ) : (
+          <button
+            disabled={props.isLoading.some(x => x === 1)}
+            onClick={() => {
+              
+              props.isLoadingAC(true, 1 );
+            
+              props.followedAC(true);
+
+              
+             
+            }}
+          >
+            stoit false
+          </button>
+
+        )
+      }
+        { props.isFollowed ? (
+          <button
+            disabled={props.isLoading.some(x => x === 2)}
+            onClick={() => {
+              props.isLoadingAC(true, 2);
+
+              props.followedAC(false)
+
+              .then(props.isLoadingAC(false, 2))
+            }}
+          >
+            fetching = true lol
+          </button>
+        ) : (
+          <button
+            disabled={props.isLoading.some(x => x === 2)}
+            onClick={() => {
+              
+              props.isLoadingAC(true, 2);
+            
+              props.followedAC(true);
+
+              props.isLoadingAC(false, 2);
+             
+            }}
+          >
+            stoit false
+          </button>
+
+        )
+      }
+        { props.isFollowed ? (
+          <button
+            disabled={props.isLoading.some(x => x === 3)}
+            onClick={() => {
+              props.isLoadingAC(true, 3);
+
+              props.followedAC(false);
+
+              props.isLoadingAC(false, 3);
+            }}
+          >
+            fetching = true lol
+          </button>
+        ) : (
+          <button
+            disabled={props.isLoading.some(x => x === 3)}
+            onClick={() => {
+              
+              props.isLoadingAC(true, 3);
+            
+              props.followedAC(true);
+
+              props.isLoadingAC(false, 3);
+             
+            }}
+          >
+            stoit false
+          </button>
+
+        )
+      }
+    
+    </div>
+  );
 };
 export default Test;

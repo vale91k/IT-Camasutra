@@ -1,28 +1,38 @@
-const FETCHING_BUTTON = 'FETCHING_BUTTON'
-const LOADING = 'LOADING'
-let initialState ={
-    isFetching: false,
-    isLoading: false
-}
- const testReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case FETCHING_BUTTON: {
-            return {...state, isFetching: action.isFetching}
-        }
+const FOLLOWED_BUTTON = "FOLLOWED_BUTTON";
+const LOADING = "LOADING";
+
+let initialState = {
+  isFollowed: false,
+  isLoading: [],
+  test: false
+};
+
+const testReducer = (state = initialState, action) => {
+ 
+  switch (action.type) {
+    case FOLLOWED_BUTTON: {
+      return { ...state, isFollowed: action.isFollowed };
+    }
+   
     case LOADING: {
-        return{...state, isLoading: action.isLoading}
+   
+      return { ...state,
+        isLoading: action.isLoading ? [...state.isLoading, action.id] : state.isLoading.filter( x => x != action.id)
+      };
     }
-        default:
-           return state;
-    }
-}
-export const fetchingAC = isFetching => {return {
-    type: FETCHING_BUTTON,
-    isFetching
-}
-}
-export const isLoadingAC = isLoading => {return {
+    default:
+      return state;
+  }
+};
+export const followedAC = isFollowed => ({
+    type: FOLLOWED_BUTTON,
+    isFollowed
+});
+export const isLoadingAC = (isLoading, id) => ({
     type: LOADING,
-    isLoading
-}}
+    isLoading,
+    id
+  });
+
+
 export default testReducer;

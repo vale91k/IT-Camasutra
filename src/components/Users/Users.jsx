@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./Users.module.css";
 import userPhoto from "../../assets/images/user.jpg";
 import { NavLink } from "react-router-dom";
-import * as Axios from "axios";
-import { UserAPI } from "../../api/api";
 
 let Users = props => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -41,38 +39,20 @@ let Users = props => {
               </NavLink>
             </div>
             <div>
-              {x.followed 
-              ?  <button disabled={props.followingInProgress}
+              {x.followed ? (
+                <button
+                  disabled={props.followingInProgress.some(id => id === x.id)}
                   onClick={() => {
-                    debugger
-                    props.toggleIsFollowingProgress(true);
-                    UserAPI.
-                    unfollowApi(x.id)
-                    .then(Response => {
-                      if (Response.data.resultCode === 0) {
-                        props.unfollow(x.id);
-                      }
-                    });
-                    debugger
-                  props.toggleIsFollowingProgress(false)
+                    props.unfollow(x.id);
                   }}
                 >
                   Unfollow
                 </button>
-               : (
-                <button disabled={props.followingInProgress}
+              ) : (
+                <button
+                  disabled={props.followingInProgress.some(id => id === x.id)}
                   onClick={() => {
-                    debugger
-                    props.toggleIsFollowingProgress(true);
-                    UserAPI.
-                    followApi(x.id)
-                    .then(Response => {
-                      if (Response.data.resultCode === 0) {
-                        props.follow(x.id);
-                      }
-                    });
-                    debugger
-                    props.toggleIsFollowingProgress(false);
+                    props.follow(x.id);
                   }}
                 >
                   Follow
