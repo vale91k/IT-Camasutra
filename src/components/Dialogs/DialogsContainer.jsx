@@ -12,7 +12,8 @@ import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 let mapStateToProps = (state) => {   
   return {
-state: state.dialogsPage
+state: state.dialogsPage,
+isAuth: state.auth.isAuth
   }
 }
 let mapDispatchToProps = (dispatch) => {

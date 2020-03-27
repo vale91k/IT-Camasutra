@@ -3,6 +3,7 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import TextArea from "./Textarea/TextArea";
+import { Redirect } from "react-router-dom";
 
 
 
@@ -11,7 +12,7 @@ import TextArea from "./Textarea/TextArea";
 
 
 const Dialogs = props => {
-debugger;
+
  
 
   let dialogsElements = props.state.dialogs.map(d => (
@@ -21,9 +22,12 @@ debugger;
   let messagesElements = props.state.messages.map(m => (
     <Message key={m.id} message={m.message} id={m.id} />
   ));
-// tyt dl9 text area
 
- 
+
+if (!props.isAuth) {
+
+  return <Redirect to={'/login'} />
+}
 
 
   return (

@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import { Redirect } from "react-router-dom";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./My posts/MyPostsContainer";
 import Preloader from "../common/Preloader/Preloader";
@@ -10,6 +9,7 @@ const Profile = props => {
 if (!props.profile) {
   return <Preloader />
 }
+
   return (
     <div>
       
