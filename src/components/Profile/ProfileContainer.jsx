@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import {   setUsersPageThunk} from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import { withRouter, Redirect } from "react-router-dom";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
   
@@ -25,15 +26,19 @@ class ProfileContainer extends React.Component {
     );
   }
 }
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
+
+
+
 
 let mapStateToProps = state => {
   return {
     profile: state.profilePage.profile,
     isFetching: state.profilePage.isFetching,
-    isAuth: state.auth.isAuth
+    
   };
 };
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer);
+let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
 export default connect(mapStateToProps, {   setUsersPageThunk   })( WithUrlDataContainerComponent);
