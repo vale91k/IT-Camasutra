@@ -1,4 +1,3 @@
-
 import {
   addMessageActionCreator,
   updateNewMessageTextActionCreator
@@ -8,6 +7,7 @@ import React from 'react'
 import { connect } from "react-redux";
 import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { compose } from "redux";
 
 
 
@@ -28,8 +28,15 @@ let mapDispatchToProps = (dispatch) => {
     }
   }
 }
-let AuthRedirectComponent = withAuthRedirect(Dialogs)
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent)
+compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect )(Dialogs)
+
+
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+   withAuthRedirect )
+   (Dialogs)
+
 
 
