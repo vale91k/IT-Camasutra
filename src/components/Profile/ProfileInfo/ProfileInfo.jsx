@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './ProfileInfo.module.css' ;
 import userPhoto from '../../../assets/images/user.jpg'
+import ProfileStatus from "./Status/ProfileStatus";
 
 
 const ProfileInfo = (props) => {
@@ -19,13 +20,7 @@ const ProfileInfo = (props) => {
         {props.profile.photos.small !== null ? <img src={props.profile.photos.small} /> : <img src={userPhoto} />}
 
         </div>
-         <div>
-        Full Name: {props.profile.fullName}, 
-        <div className={styles.aboutMe}>
-        About Me: {props.profile.aboutMe}
-         </div>
-
-          </div>
+      <ProfileStatus profile={props.profile} status={'zdarova my driends'}/>
         </div>
     
       </div>
