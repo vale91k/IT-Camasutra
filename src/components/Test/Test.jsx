@@ -1,105 +1,22 @@
 import React from "react";
 import ss from "./Test.module.css";
+import ButtonsWithFollow from "./ButtonsWithFollow/ButtonsWithFollow";
 
 const Test = props => {
-  
+
   return (
     <div>
-      
-        { props.isFollowed ? (
-          <button
-            disabled={props.isLoading.some(x => x === 1)}
-            onClick={() => {
-              props.isLoadingAC(true, 1);
-
-              props.followedAC(false);
-
-              props.isLoadingAC(false, 1);
-            }}
-          >
-            fetching = true lol
-          </button>
-        ) : (
-          <button
-            disabled={props.isLoading.some(x => x === 1)}
-            onClick={() => {
-              
-              props.isLoadingAC(true, 1 );
-            
-              props.followedAC(true);
-
-              
-             
-            }}
-          >
-            stoit false
-          </button>
-
-        )
-      }
-        { props.isFollowed ? (
-          <button
-            disabled={props.isLoading.some(x => x === 2)}
-            onClick={() => {
-              props.isLoadingAC(true, 2);
-
-              props.followedAC(false)
-
-              .then(props.isLoadingAC(false, 2))
-            }}
-          >
-            fetching = true lol
-          </button>
-        ) : (
-          <button
-            disabled={props.isLoading.some(x => x === 2)}
-            onClick={() => {
-              
-              props.isLoadingAC(true, 2);
-            
-              props.followedAC(true);
-
-              props.isLoadingAC(false, 2);
-             
-            }}
-          >
-            stoit false
-          </button>
-
-        )
-      }
-        { props.isFollowed ? (
-          <button
-            disabled={props.isLoading.some(x => x === 3)}
-            onClick={() => {
-              props.isLoadingAC(true, 3);
-
-              props.followedAC(false);
-
-              props.isLoadingAC(false, 3);
-            }}
-          >
-            fetching = true lol
-          </button>
-        ) : (
-          <button
-            disabled={props.isLoading.some(x => x === 3)}
-            onClick={() => {
-              
-              props.isLoadingAC(true, 3);
-            
-              props.followedAC(true);
-
-              props.isLoadingAC(false, 3);
-             
-            }}
-          >
-            stoit false
-          </button>
-
-        )
-      }
-    
+      <ButtonsWithFollow
+       followedAC={props.followedAC}
+        isFollowed={props.isFollowed}
+        isLoading={props.isLoading}
+        isLoadingAC={props.isLoadingAC}
+        test={props.test}
+        />
+        <input autoFocus={true} type="text"/>
+   
+        <input autoFocus={true} value="tex2t"/>
+        <input autoFocus={true} value="text"/>
     </div>
   );
 };

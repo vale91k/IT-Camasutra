@@ -20,7 +20,7 @@ const ProfileInfo = (props) => {
         {props.profile.photos.small !== null ? <img src={props.profile.photos.small} /> : <img src={userPhoto} />}
 
         </div>
-      <ProfileStatus profile={props.profile} status={'zdarova my driends'}/>
+      <ProfileStatus status={props.status} updateStatusThunk={props.updateStatusThunk} profile={props.profile} />
         </div>
     
       </div>

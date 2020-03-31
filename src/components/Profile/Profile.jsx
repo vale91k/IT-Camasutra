@@ -13,7 +13,7 @@ if (!props.profile) {
   return (
     <div>
       
-      <ProfileInfo profile={props.profile}/>
+      <ProfileInfo status={props.status} updateStatusThunk={props.updateStatusThunk} profile={props.profile}/>
       <MyPostsContainer />
     </div>
   );

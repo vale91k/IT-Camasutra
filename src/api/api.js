@@ -21,10 +21,22 @@ export const UserAPI = {
         return instance.post(`follow/${userId}`)
     },
     setUserPageApi(userId) {
-        return instance.get(`profile/${userId}`)
+        return profileAPI.setUserPageApi(userId)
     },
     login() {
         return instance.get('auth/me')
+    }
+}
+export const profileAPI = {
+    
+    setUserPageApi(userId) {
+        return instance.get(`profile/${userId}`)
+    },
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status/`, {status})
     }
 }
 export const authAPI = { 
