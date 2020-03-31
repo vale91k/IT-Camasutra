@@ -29,6 +29,13 @@ onStatusChange = (e) => {
       )
        this.props.updateStatusThunk(e.target.value)
   }
+  componentDidUpdate(prevProps, prevState) { 
+    if (prevProps.status !== this.props.status) {
+   this.setState({
+     status: this.props.status
+   })
+  }
+}
   render() {
     return (
       <>
