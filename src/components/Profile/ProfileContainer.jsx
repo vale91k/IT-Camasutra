@@ -19,9 +19,7 @@ class ProfileContainer extends React.Component {
     
   }
   render() {
-    if (!this.props.isAuth) {
-      return <Redirect to={"/login"} />;
-    }
+ 
     return (
       <>
         {this.props.isFetching ? (
@@ -44,5 +42,5 @@ let mapStateToProps = state => {
 export default compose(
   connect(mapStateToProps, { setUsersPageThunk, updateStatusThunk, getStatusThunk }),
   withRouter,
-   withAuthRedirect
+  //  withAuthRedirect
 )(ProfileContainer);

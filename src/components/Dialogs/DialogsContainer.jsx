@@ -34,8 +34,10 @@ compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect )(Dialogs
 
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-   withAuthRedirect )
+  connect(mapStateToProps, mapDispatchToProps)
+
+  //  withAuthRedirect 
+   )
    (Dialogs)
 
 
