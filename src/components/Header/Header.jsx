@@ -9,7 +9,8 @@ return (
     <header className={style.header}>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Logo_TV_2015.svg/1200px-Logo_TV_2015.svg.png" alt="https://www.freelogodesign.org/Content/img/logo-samples/flooop.png"/>
         <div className={style.login_block}>
-         {props.isAuth ?  props.login : <Login />}
+        {/* {props.isAuth ?  props.login : <Login />} */}
+         {  props.login }
         </div>
       </header>
 );

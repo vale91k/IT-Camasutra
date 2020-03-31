@@ -4,7 +4,6 @@ import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import Dialogs from "./components/Dialogs/Dialogs";
 import { Route, BrowserRouter } from "react-router-dom";
 import TestContainer from "./components/Test/TestContainer";
 import News from "./components/News/News";
