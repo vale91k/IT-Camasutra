@@ -43,15 +43,38 @@ export const loginThunk = () => {
 
     authAPI.me().then(Response => {
       if (Response.data.resultCode === 0) {
-        let {id, login, email} = Response.data.data;
-        dispatch(setAuthUserData(id, login, email))
+        let {id, email, login} = Response.data.data;
+        dispatch(setAuthUserData(id, email, login))
       }
     }
     )
   }
 }
       
-    
+    export const LoginPageThunk = (email, password, rememberMe ) => { 
+      return (dispatch) => {
+authAPI.auth(email, password, rememberMe).then(Response => {
+  if (Response.data.resultCode === 0) {
+    authAPI.me().then(Response => {
+      if (Response.data.resultCode === 0) {
+        let {id, email, login} = Response.data.data;
+        dispatch(setAuthUserData(id, email, login))
+      }
+    })
+  }
+})
+      }
+    }
+      export const Logout = () => {
+        return (dispatch) => {
+          authAPI.logout()
+          let id = null;
+          let email = null;
+          let login = null;
+          dispatch(setAuthUserData(id, email, login))
+          
+          }
+        }
       
     
 

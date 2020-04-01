@@ -1,10 +1,13 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
+import PostForm from "./PostForm/PostForm";
+import { reduxForm } from 'redux-form';
+
+const ReduxPostForm = reduxForm({form: 'profilePostForm'})(PostForm);
 
 
 const MyPosts = props => {
-  
   
   let postsElements = props.posts.map(p => (
     <Post
@@ -15,31 +18,18 @@ const MyPosts = props => {
     />
   ));
 
-  let onAddPost = () => {
-   
-    props.addPost()
-  };
+ 
 
-  let onPostChange = (e) => {
-  let text = e.target.value;
-    props.updateNewPostText(text)
-  };
 
+  const onSubmit = (newPostMessage) => {
+    props.addPost(newPostMessage.newPostMessage)
+    }
   return (
     <div className={s.postsBlock}>
       <h3>My posts</h3>
-      <div>
-        <div>
-          <textarea
-            onChange={onPostChange}
-            value={props.newPostText}
-          />
-        </div>
-        <div>
-          <button onClick={onAddPost}>Add Post</button>
-          <button>Remove Post</button>
-        </div>
-      </div>
+      <div className={s.redux_form}>
+        <ReduxPostForm onSubmit={onSubmit}/>
+       </div>
       <div className={s.posts}>{postsElements}</div>
     </div>
   );

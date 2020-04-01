@@ -4,12 +4,13 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import TextArea from "./Textarea/TextArea";
 import { Redirect } from "react-router-dom";
+import { reduxForm } from 'redux-form';
 
 
 
 
 
-
+const DialogTextForm = reduxForm({form: 'login'})(TextArea);
 
 const Dialogs = props => {
 
@@ -23,7 +24,10 @@ const Dialogs = props => {
     <Message key={m.id} message={m.message} id={m.id} />
   ));
 
-
+const onSubmit =(www) => {
+  console.log(www.newMessageBody)
+  props.addMessage(www.newMessageBody)
+}
 
 
   return (
@@ -31,8 +35,8 @@ const Dialogs = props => {
       <div className={s.dialogsItems}>{dialogsElements}</div>
 
       <div className={s.messages}>{messagesElements}</div>
-      {/* a tyt text area */}
-      <TextArea addMessage={props.addMessage} onMessageChange={props.onMessageChange} newMessageText={props.state.newMessageText}/>
+      
+      <DialogTextForm onSubmit={onSubmit} addMessage={props.addMessage} onMessageChange={props.onMessageChange} newMessageText={props.state.newMessageText}/>
     </div>
   );
 };

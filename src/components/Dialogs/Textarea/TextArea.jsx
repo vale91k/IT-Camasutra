@@ -1,29 +1,23 @@
 import React from "react";
 import s from "./TextArea.module.css";
- 
-
+import { Field } from "redux-form";
 
 const TextArea = props => {
  
-  
-  let addMessage = () => {
-    props.addMessage()
-  }
 
-  let onMessageChange = (text) => {
-  
-     let message = text.target.value;
-     props.onMessageChange(message);
-  }
+
 
   return (
-    <div className={s.textarea}>
-      <textarea
-        onChange={onMessageChange}
-        value={props.newMessageText}
-      ></textarea>
-      <button onClick={addMessage}>Add Message</button>
-    </div>
+    <form className={s.textarea} onSubmit={props.handleSubmit}>
+      <div>
+        <Field
+          placeholder={"tyt"}
+          name={"newMessageBody"}
+          component={"textarea"}
+        />
+      </div>
+      <button>Submit</button>
+    </form>
   );
 };
 

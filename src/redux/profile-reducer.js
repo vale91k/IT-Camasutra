@@ -1,8 +1,7 @@
-import { UserAPI, profileAPI } from "./../api/api";
+import {  profileAPI } from "./../api/api";
 
 
 const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const TOGGLE_ISFETCHING = "TOOGGLE_ISFETCHING";
 const SET_USER_STATUS = "SET_USER_STATUS";
@@ -25,7 +24,7 @@ let initialState = {
         "https://kittentoob.com/wp-content/uploads/2018/04/British-Shorthair-1-750x419.jpg"
     }
   ],
-  newPostText: "",
+  
   profile: null,
   isFetching: false,
   status: '',
@@ -38,16 +37,14 @@ const profileReducer = (state = initialState, action) => {
     case ADD_POST: {
       let newPost = {
         id: 5,
-        message: state.newPostText,
+        message: action.newPostMessage,
         avatar:
           "https://www.sciencealert.com/images/2019-12/processed/CatsHaveFacialExpressionsButHardToRead_600.jpg",
         likeCount: 1488
       };
       return { ...state, posts: [...state.posts, newPost] };
     }
-    case UPDATE_NEW_POST_TEXT: {
-      return { ...state, newPostText: action.newText };
-    }
+   
     case SET_USER_PROFILE: {
       return { ...state, profile: action.profile };
     }
@@ -66,11 +63,8 @@ const profileReducer = (state = initialState, action) => {
 };
 export const setStatus = (status) => ( {type: SET_USER_STATUS, status})
 export const testAC = (test) => ({type: 'TEST', test})
-export const addPostActionCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextActionCreator = text => ({
-  type: UPDATE_NEW_POST_TEXT,
-  newText: text
-});
+export const addPostActionCreator = (newPostMessage) => ({ type: ADD_POST, newPostMessage });
+
 export const setUserProfile = profile => ({ type: SET_USER_PROFILE, profile});
 export const toogleIsFetching = isFetching => ({
   type: TOGGLE_ISFETCHING,

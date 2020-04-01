@@ -3,7 +3,7 @@ import { withAuthRedirect } from "./../../hoc/withAuthRedirect";
 import { reduxForm, Field } from 'redux-form';
 import {compose} from 'redux'
 import {connect} from 'react-redux'
-
+import {LoginPageThunk} from './../../redux/auth-reducer'
 
 const LoginForm = props => {
     return (
@@ -23,8 +23,11 @@ const LoginForm = props => {
 
   export const Login = props => {
     const onSubmit = (formData) => {
-        console.log(formData)
+        let {login, password, rememberMe = false} = formData
+        props.LoginPageThunk(login, password, rememberMe)
+     
     }
+    
     return (
       <div>
         <h1>Login</h1>
@@ -34,8 +37,10 @@ const LoginForm = props => {
   };
 
 const MapStateToPorps = (state) => {
-    {}
+    {
+
+    }
 }
   
 
-export default  connect(MapStateToPorps, {})(Login)
+export default  connect(MapStateToPorps, {LoginPageThunk})(Login)

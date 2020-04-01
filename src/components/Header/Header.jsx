@@ -11,7 +11,7 @@ return (
         <div className={style.login_block}>
         {/* {props.isAuth ?  props.login : <Login />} */}
          {  props.login || 'login please'}
-         
+         <button onClick={props.Logout}>Logout</button>
         </div>
       </header>
 );
