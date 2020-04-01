@@ -39,6 +39,7 @@ let mapStateToProps = state => {
     status: state.profilePage.status
   };
 };
+
 export default compose(
   connect(mapStateToProps, { setUsersPageThunk, updateStatusThunk, getStatusThunk }),
   withRouter,

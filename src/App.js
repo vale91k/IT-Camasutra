@@ -10,7 +10,7 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import LoginPage from "./components/Login/Login";
+import  LoginPage  from "./components/Login/Login"
 
 const App = props => {
   return (
