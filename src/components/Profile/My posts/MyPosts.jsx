@@ -23,6 +23,7 @@ const MyPosts = props => {
 
   const onSubmit = (newPostMessage) => {
     props.addPost(newPostMessage.newPostMessage)
+   
     }
   return (
     <div className={s.postsBlock}>

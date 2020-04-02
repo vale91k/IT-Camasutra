@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import TextArea from "./Textarea/TextArea";
+import DialogTextArea from "./DialogTextArea/DialogTextArea";
 import { Redirect } from "react-router-dom";
 import { reduxForm } from 'redux-form';
 
@@ -10,7 +10,7 @@ import { reduxForm } from 'redux-form';
 
 
 
-const DialogTextForm = reduxForm({form: 'login'})(TextArea);
+const DialogTextForm = reduxForm({form: 'login'})(DialogTextArea);
 
 const Dialogs = props => {
 
