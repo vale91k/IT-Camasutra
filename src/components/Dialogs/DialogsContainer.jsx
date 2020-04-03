@@ -25,7 +25,7 @@ compose(
 )(Dialogs);
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
 
-  //  withAuthRedirect
+    withAuthRedirect
 )(Dialogs);

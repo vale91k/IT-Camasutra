@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {LoginPageThunk} from './../../redux/auth-reducer'
 import { Element } from "../common/FormsControls/FormsControls";
 import { required, email } from "../../utils/validators/validators";
+import { Redirect } from "react-router-dom";
 
 
 
@@ -14,7 +15,7 @@ const LoginForm = props => {
     return (
       <form onSubmit={props.handleSubmit}>
       <div><Field placeholder={'Login'} name={'login'} component={Input} validate={[required, email]}/></div>
-      <div><Field placeholder={'Password'} name={'password'} component={Input} validate={[required]}/></div>
+      <div><Field placeholder={'Password'} type={'password'} name={'password'} component={Input} validate={[required]}/></div>
       <div><Field type={'checkbox'} name={'rememberMe'} component={'input'}/></div>
       <div><button>Login</button></div>
   </form>
@@ -29,13 +30,17 @@ const LoginForm = props => {
   export const Login = props => {
     const onSubmit = (formData) => {
     
-      console.log('hehe')
+      console.log(formData)
         let {login, password, rememberMe = false} = formData
         props.LoginPageThunk(login, password, rememberMe)
        
     }
-    
+     if (props.isAuth) {
+       return <Redirect to={'/profile'} />
+      }
+
     return (
+   
       <div>
         <h1>Login</h1>
         <LoginReduxForm onSubmit={onSubmit}/>
@@ -44,8 +49,8 @@ const LoginForm = props => {
   };
 
 const MapStateToPorps = (state) => {
-    {
-
+ return   {
+isAuth: state.auth.isAuth
     }
 }
   

@@ -64,8 +64,8 @@ export default compose(connect(mapStateToProps,{
   unfollow,
   getUsersThunkCreator,
   setNewPage
-})
-// withAuthRedirect
+}),
+ withAuthRedirect
 )(UsersContainer)
 
 

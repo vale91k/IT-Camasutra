@@ -13,11 +13,12 @@ let initialState = {
 };
 
 const authReducer = (state = initialState, action) => {
+  
   switch (action.type) {
     case SET_USER_DATA:
       {
             return {
-              ...state, ...action.data, isAuth:true
+              ...state, ...action.data
             }
       }
       case TOGGLE_IS_FETCHING: {
@@ -31,7 +32,9 @@ return state
   }
 }
 
-export const setAuthUserData = (id, email, login) => { return {type: SET_USER_DATA, data: {id, email, login}}}
+export const setAuthUserData = (id, email, login, isAuth) => {
+ 
+   return {type: SET_USER_DATA, data: {id, email, login, isAuth}}}
 
 export const toggleIsFetching = isFetching => ({
   type: TOGGLE_IS_FETCHING,
@@ -44,7 +47,7 @@ export const loginThunk = () => {
     authAPI.me().then(Response => {
       if (Response.data.resultCode === 0) {
         let {id, email, login} = Response.data.data;
-        dispatch(setAuthUserData(id, email, login))
+        dispatch(setAuthUserData(id, email, login, true))
       }
     }
     )
@@ -53,12 +56,12 @@ export const loginThunk = () => {
       
     export const LoginPageThunk = (email, password, rememberMe ) => { 
       return (dispatch) => {
-authAPI.auth(email, password, rememberMe).then(Response => {
+authAPI.login(email, password, rememberMe).then(Response => {
   if (Response.data.resultCode === 0) {
     authAPI.me().then(Response => {
       if (Response.data.resultCode === 0) {
         let {id, email, login} = Response.data.data;
-        dispatch(setAuthUserData(id, email, login))
+        dispatch(setAuthUserData(id, email, login, true))
       }
     })
   }
@@ -66,12 +69,14 @@ authAPI.auth(email, password, rememberMe).then(Response => {
       }
     }
       export const Logout = () => {
+        
         return (dispatch) => {
           authAPI.logout()
           let id = null;
           let email = null;
           let login = null;
-          dispatch(setAuthUserData(id, email, login))
+          let isAuth = false;
+          dispatch(setAuthUserData(id, email, login, isAuth))
           
           }
         }
