@@ -14,7 +14,7 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 3,
   isFetching: false,
-  followingInProgress: []
+  followingInProgress: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -22,23 +22,23 @@ const usersReducer = (state = initialState, action) => {
     case FOLLOW: {
       return {
         ...state,
-        users: state.users.map(x => {
+        users: state.users.map((x) => {
           if (x.id === action.userId) {
             return { ...x, followed: true };
           }
           return x;
-        })
+        }),
       };
     }
     case UNFOLLOW: {
       return {
         ...state,
-        users: state.users.map(x => {
+        users: state.users.map((x) => {
           if (x.id === action.userId) {
             return { ...x, followed: false };
           }
           return x;
-        })
+        }),
       };
     }
     case SET_USERS: {
@@ -58,7 +58,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         followingInProgress: action.isFetching
           ? [...state.followingInProgress, action.id]
-          : state.followingInProgress.filter(x => x != action.id)
+          : state.followingInProgress.filter((x) => x != action.id),
       };
     }
 
@@ -66,53 +66,53 @@ const usersReducer = (state = initialState, action) => {
       return state;
   }
 };
-export const followSuccess = userId => ({ type: FOLLOW, userId });
-export const unfollowSuccess = userId => ({ type: UNFOLLOW, userId });
-export const setUsers = users => ({ type: SET_USERS, users });
-export const setCurrentPage = currentPage => ({
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
+export const setUsers = (users) => ({ type: SET_USERS, users });
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
-  currentPage
+  currentPage,
 });
-export const setTotalUsers = totalUsers => ({
+export const setTotalUsers = (totalUsers) => ({
   type: SET_TOTAL_USERS,
-  totalUsers
+  totalUsers,
 });
-export const toggleIsFetching = isFetching => ({
+export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
-  isFetching
+  isFetching,
 });
 export const toggleIsFollowingProgress = (isFetching, id) => ({
   type: TOGGLE_IS_FOLLOWING_PROGRESS,
   isFetching,
-  id
+  id,
 });
 
 export const getUsersThunkCreator = (currentPage, pageSize) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(toggleIsFetching(true));
-    UserAPI.getUsers(currentPage, pageSize).then(data => {
-    dispatch(toggleIsFetching(false));
-    dispatch(setUsers(data.items));
-    dispatch(setTotalUsers(data.totalCount));
+    UserAPI.getUsers(currentPage, pageSize).then((data) => {
+      dispatch(toggleIsFetching(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsers(data.totalCount));
     });
   };
 };
 export const setNewPage = (currentPage = 1, pageSize) => {
-  return dispatch => {
+  return (dispatch) => {
     dispatch(setCurrentPage(currentPage));
     dispatch(toggleIsFetching(true));
-    UserAPI.getUsers(currentPage, pageSize).then(data => {
+    UserAPI.getUsers(currentPage, pageSize).then((data) => {
       dispatch(toggleIsFetching(false));
 
       dispatch(setUsers(data.items));
     });
   };
 };
-export const unfollow = id => {
-  return dispatch => {
+export const unfollow = (id) => {
+  return (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, id));
 
-    UserAPI.unfollowApi(id).then(Response => {
+    UserAPI.unfollowApi(id).then((Response) => {
       if (Response.data.resultCode === 0) {
         dispatch(unfollowSuccess(id));
       }
@@ -121,10 +121,10 @@ export const unfollow = id => {
   };
 };
 
-export const follow = id => {
-  return dispatch => {
+export const follow = (id) => {
+  return (dispatch) => {
     dispatch(toggleIsFollowingProgress(true, id));
-    UserAPI.followApi(id).then(Response => {
+    UserAPI.followApi(id).then((Response) => {
       if (Response.data.resultCode === 0) {
         dispatch(followSuccess(id));
       }
