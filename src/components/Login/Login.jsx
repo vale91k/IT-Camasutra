@@ -7,16 +7,21 @@ import {LoginPageThunk} from './../../redux/auth-reducer'
 import { Element } from "../common/FormsControls/FormsControls";
 import { required, email } from "../../utils/validators/validators";
 import { Redirect } from "react-router-dom";
-
+import styles from '../common/FormsControls/FormsControls.module.css'
 
 
 const Input = Element('input')
 const LoginForm = props => {
+
     return (
       <form onSubmit={props.handleSubmit}>
       <div><Field placeholder={'Login'} name={'login'} component={Input} validate={[required, email]}/></div>
       <div><Field placeholder={'Password'} type={'password'} name={'password'} component={Input} validate={[required]}/></div>
       <div><Field type={'checkbox'} name={'rememberMe'} component={'input'}/></div>
+      { props.error &&  (<div className={styles.formSummartError}>
+{props.error}
+      </div>) }
+      
       <div><button>Login</button></div>
   </form>
     );

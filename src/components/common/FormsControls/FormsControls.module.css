@@ -10,3 +10,8 @@
     font-weight: bold;
     color: red;
 }
+
+.formSummartError {
+    border: 1px solid red;
+    padding: 5px;
+}

@@ -28,7 +28,8 @@ let initialState = {
   profile: null,
   isFetching: false,
   status: '',
-  test: ''
+  test: '',
+  userId: ''
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -71,7 +72,7 @@ export const toogleIsFetching = isFetching => ({
   isFetching
 });
 
-export const setUsersPageThunk = (userId =2) => {
+export const setUsersPageThunk = (userId) => {
   return (dispatch) => {
     dispatch(toogleIsFetching(true))
   profileAPI.setUserPageApi(userId).then(Response => {
