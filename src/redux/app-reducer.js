@@ -1,5 +1,4 @@
-
-import {loginThunk} from './auth-reducer'
+import { loginThunk } from "./auth-reducer";
 const SET_INITIALIZED_SUCCESS = "SET_INITIALIZED_SUCCESS";
 
 let initialState = {
@@ -25,13 +24,9 @@ export const initializedSuccess = () => {
 };
 
 export const initializeApp = () => (dispatch) => {
-    let promise = dispatch(loginThunk());
+  let promise = dispatch(loginThunk());
 
-    Promise.all([promise]).then( () => dispatch(initializedSuccess()))
-  
-      
-  
-  };
-
+  Promise.all([promise]).then(() => dispatch(initializedSuccess()));
+};
 
 export default appReducer;

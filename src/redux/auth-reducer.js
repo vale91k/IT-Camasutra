@@ -1,8 +1,8 @@
 import { authAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
-const SET_USER_DATA = "SET_USER_DATA";
-const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const SET_USER_DATA = "social-network/auth/SET_USER_DATA";
+const TOGGLE_IS_FETCHING = "social-network/auth/TOGGLE_IS_FETCHING";
 
 let initialState = {
   id: null,
@@ -38,36 +38,37 @@ export const toggleIsFetching = (isFetching) => ({
   isFetching,
 });
 
-export const loginThunk = () =>  (dispatch) => {
-   return  authAPI.me().then((Response) => {
-      if (Response.data.resultCode === 0) {
-        let { id, email, login } = Response.data.data;
+export const loginThunk = () =>  async(dispatch) => {
+  let response =  await  authAPI.me()
+      if (response.data.resultCode === 0) {
+        let { id, email, login } = response.data.data;
         dispatch(setAuthUserData(id, email, login, true));
       }
-    });
+
    
   };
   
 
 
 export const LoginPageThunk = (email, password, rememberMe) => {
-  return (dispatch) => {
-    authAPI.login(email, password, rememberMe).then((response) => {
-      if (response.data.resultCode === 0) {
-        authAPI.me().then((response) => {
-          if (response.data.resultCode === 0) {
-            let { id, email, login } = response.data.data;
+  return async(dispatch) => {
+   let loginResponse= await authAPI.login(email, password, rememberMe)
+      if (loginResponse.data.resultCode === 0) {
+        let authResponse = await authAPI.me()
+        
+          if (authResponse.data.resultCode === 0) {
+            let { id, email, login } = authResponse.data.data;
             dispatch(setAuthUserData(id, email, login, true));
           }
-        });
+     
       } else {
         let message =
-          response.data.messages.length > 0
-            ? response.data.messages[0]
+        loginResponse.data.messages.length > 0
+            ? loginResponse.data.messages[0]
             : "Some Error";
         dispatch(stopSubmit("login", { _error: message }));
       }
-    });
+   
   };
 };
 
