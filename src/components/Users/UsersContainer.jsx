@@ -11,35 +11,45 @@ import Preloader from "../common/Preloader/Preloader";
 import { Redirect } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
-import { getUsers, getPageSize, getTotalUsersCount, getCurrentPage,getIsFetching,getFollowingInProgress} from "../../redux/user-selectors";
+import {
+  getUsers,
+  getPageSize,
+  getTotalUsersCount,
+  getCurrentPage,
+  getIsFetching,
+  getFollowingInProgress,
+} from "../../redux/user-selectors";
 
 class UsersContainer extends React.Component {
   componentDidMount() {
+    const {currentPage, pageSize} = this.props
     this.props.getUsersThunkCreator(
-      this.props.currentPage,
-      this.props.pageSize
+      currentPage,
+      pageSize
     );
   }
 
   onPageChanged = (pageNumber) => {
-    this.props.setNewPage(pageNumber, this.props.pageSize);
+    const {pageSize} = this.props
+    this.props.setNewPage(pageNumber, pageSize);
   };
 
   render() {
+    let {isFetching, users, pageSize, totalUsersCount, currentPage, follow, unfollow, followingInProgress} = this.props
     return (
       <>
-        {this.props.isFetching ? (
+        {isFetching ? (
           <Preloader />
         ) : (
           <Users
-            users={this.props.users}
-            pageSize={this.props.pageSize}
-            totalUsersCount={this.props.totalUsersCount}
-            currentPage={this.props.currentPage}
+            users={users}
+            pageSize={pageSize}
+            totalUsersCount={totalUsersCount}
+            currentPage={currentPage}
             onPageChanged={this.onPageChanged}
-            follow={this.props.follow}
-            unfollow={this.props.unfollow}
-            followingInProgress={this.props.followingInProgress}
+            follow={follow}
+            unfollow={unfollow}
+            followingInProgress={followingInProgress}
           />
         )}
       </>
@@ -63,6 +73,6 @@ export default compose(
     unfollow,
     getUsersThunkCreator,
     setNewPage,
-  })
-  //  withAuthRedirect
+  }),
+  withAuthRedirect
 )(UsersContainer);

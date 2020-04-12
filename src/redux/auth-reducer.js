@@ -1,5 +1,7 @@
 import { authAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
+import { Redirect } from "react-router-dom";
+import React from 'react'
 
 const SET_USER_DATA = "social-network/auth/SET_USER_DATA";
 const TOGGLE_IS_FETCHING = "social-network/auth/TOGGLE_IS_FETCHING";
@@ -80,6 +82,9 @@ export const Logout = () => {
     let login = null;
     let isAuth = false;
     dispatch(setAuthUserData(id, email, login, isAuth));
+    if (isAuth) {
+return <Redirect to={"/login"} />
+    }
   };
 };
 

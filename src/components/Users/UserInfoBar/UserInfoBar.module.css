@@ -1,0 +1,23 @@
+.leftSideBar {
+  padding-left: 15px;
+  float: left;
+}
+.leftSideBar > .fullName {
+  padding-top: 6px;
+  padding-bottom: 20px;
+  font-weight: bold;
+}
+
+.rightsideBar {
+  float: right;
+  padding-right: 10px;
+  padding-top: 6px;
+}
+.rightsideBar > .city {
+  padding-bottom: 20px;
+}
+.rightBar {
+  grid-area: r;
+  border: 2px solid #1c6ea4;
+  border-radius: 18px;
+}

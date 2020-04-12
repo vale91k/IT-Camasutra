@@ -1,19 +1,18 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./My posts/MyPostsContainer";
 import Preloader from "../common/Preloader/Preloader";
 
-const Profile = props => {
+const Profile = ({profile, status, updateStatusThunk}) => {
 
-if (!props.profile) {
+if (!profile) {
   return <Preloader />
 }
 
   return (
     <div>
       
-      <ProfileInfo status={props.status} updateStatusThunk={props.updateStatusThunk} profile={props.profile}/>
+      <ProfileInfo status={status} updateStatusThunk={updateStatusThunk} profile={profile}/>
       <MyPostsContainer />
     </div>
   );

@@ -6,7 +6,7 @@ const DialogItem = props => {
 
   return (
     <div className={ss.dialogs}>
-      <NavLink className={ss.dialog} activeClassName={ss.active} to={path}><img src={props.avatar} />
+      <NavLink className={ss.dialog} activeClassName={ss.active} to={path}><img src={props.avatar}  />
       <div className={ss.dialogName}>{props.name}</div>
         
       </NavLink>
