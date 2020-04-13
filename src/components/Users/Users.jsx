@@ -1,6 +1,7 @@
 import React from "react";
 import Paginator from "../common/Paginator/Pagenator";
 import User from "./User";
+import Preloader from "../common/Preloader/Preloader";
 
 let Users = ({
   onClick,
@@ -12,24 +13,20 @@ let Users = ({
   followingInProgress,
   unfollow,
   follow,
+  isFetching
 }) => {
-  let pagesCount = Math.ceil(totalUsersCount / pageSize);
 
-  let pages = [];
-  for (let i = 1; i <= pagesCount; i++) {
-    pages.push(i);
-  }
   return (
     <div>
       <Paginator
         onClick={onClick}
         currentPage={currentPage}
         pageSize={pageSize}
-        totalUsersCount={totalUsersCount}
+        itemsCount={totalUsersCount}
         onPageChanged={onPageChanged}
       />
 
-      {users.map((user) => (
+      {isFetching ? <Preloader /> : users.map((user) => (
         <User
           id={user.id}
           smallPhoto={user.photos.small}

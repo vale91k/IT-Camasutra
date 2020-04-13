@@ -1,7 +1,6 @@
 import React from "react";
 import style from './Header.module.css' ;
 import { NavLink, Redirect } from "react-router-dom";
-import Login from "../Login/Login";
 
 const Header = (props) => {
 

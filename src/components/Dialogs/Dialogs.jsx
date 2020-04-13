@@ -3,7 +3,6 @@ import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import DialogTextArea from "./DialogTextArea/DialogTextArea";
-import { Redirect } from "react-router-dom";
 import { reduxForm } from 'redux-form';
 
 

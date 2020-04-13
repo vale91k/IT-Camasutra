@@ -11,9 +11,9 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
 let initialState = {
   users: [],
-  pageSize: 5,
+  pageSize: 10,
   totalUsersCount: 0,
-  currentPage: 3,
+  currentPage: 1,
   isFetching: false,
   followingInProgress: [],
 };
@@ -51,7 +51,7 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         followingInProgress: action.isFetching
           ? [...state.followingInProgress, action.id]
-          : state.followingInProgress.filter((x) => x != action.id),
+          : state.followingInProgress.filter((x) => x !== action.id),
       };
     }
 
@@ -91,12 +91,12 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     
   };
 };
-export const setNewPage = (currentPage = 1, pageSize) => {
+export const setNewPage = (currentPage , pageSize) => {
   return async (dispatch) => {
     dispatch(setCurrentPage(currentPage));
-    dispatch(toggleIsFetching(true));
+     dispatch(toggleIsFetching(true));
     let response = await UserAPI.getUsers(currentPage, pageSize);
-    dispatch(toggleIsFetching(false));
+     dispatch(toggleIsFetching(false));
     dispatch(setUsers(response.items));
   };
 };

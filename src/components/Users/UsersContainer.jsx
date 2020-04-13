@@ -8,7 +8,6 @@ import {
 import { connect } from "react-redux";
 import Users from "./Users";
 import Preloader from "../common/Preloader/Preloader";
-import { Redirect } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import {
@@ -35,13 +34,12 @@ class UsersContainer extends React.Component {
   };
 
   render() {
-    let {isFetching, users, pageSize, totalUsersCount, currentPage, follow, unfollow, followingInProgress} = this.props
+    const {isFetching, users, pageSize, totalUsersCount, currentPage, follow, unfollow, followingInProgress} = this.props
     return (
       <>
-        {isFetching ? (
-          <Preloader />
-        ) : (
+       
           <Users
+          isFetching={isFetching}
             users={users}
             pageSize={pageSize}
             totalUsersCount={totalUsersCount}
@@ -51,7 +49,7 @@ class UsersContainer extends React.Component {
             unfollow={unfollow}
             followingInProgress={followingInProgress}
           />
-        )}
+       
       </>
     );
   }
