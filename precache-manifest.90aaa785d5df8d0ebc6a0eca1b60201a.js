@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "04f8988c7f94a9d55082276515ab6bf2",
+    "revision": "17ddf778a683901bc21f2b798bc966ab",
     "url": "/IT-Camasutra/index.html"
   },
   {
-    "revision": "bcff33629e494e2e61fa",
-    "url": "/IT-Camasutra/static/css/3.880ea170.chunk.css"
+    "revision": "1548682a118b3739e6dc",
+    "url": "/IT-Camasutra/static/css/3.3bd1bb7b.chunk.css"
   },
   {
-    "revision": "b763df694fcbdee4ad6a",
-    "url": "/IT-Camasutra/static/css/4.d33b190e.chunk.css"
+    "revision": "cfdd122395e2192353d0",
+    "url": "/IT-Camasutra/static/css/4.06f99d08.chunk.css"
   },
   {
-    "revision": "a9fc09c4682f677200f4",
-    "url": "/IT-Camasutra/static/css/main.d9cf3ee4.chunk.css"
+    "revision": "c0f37332474c48d082b7",
+    "url": "/IT-Camasutra/static/css/main.d38ce0ee.chunk.css"
   },
   {
     "revision": "4f82e50e7c40824d1f96",
@@ -24,20 +24,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IT-Camasutra/static/js/2.a4d547b2.chunk.js.LICENSE"
   },
   {
-    "revision": "bcff33629e494e2e61fa",
+    "revision": "1548682a118b3739e6dc",
     "url": "/IT-Camasutra/static/js/3.2eba18d5.chunk.js"
   },
   {
-    "revision": "b763df694fcbdee4ad6a",
+    "revision": "cfdd122395e2192353d0",
     "url": "/IT-Camasutra/static/js/4.519e9763.chunk.js"
   },
   {
-    "revision": "a9fc09c4682f677200f4",
+    "revision": "c0f37332474c48d082b7",
     "url": "/IT-Camasutra/static/js/main.68ebe54e.chunk.js"
   },
   {
-    "revision": "7bd34978e29b15dce59b",
-    "url": "/IT-Camasutra/static/js/runtime-main.9759608c.js"
+    "revision": "c9b5bfa94ed04b4cee88",
+    "url": "/IT-Camasutra/static/js/runtime-main.c72b77b5.js"
   },
   {
     "revision": "b8adbec9d887b5b1c05df1b61c00ff93",
