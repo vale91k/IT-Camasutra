@@ -23,10 +23,10 @@ export const initializedSuccess = () => {
   return { type: SET_INITIALIZED_SUCCESS };
 };
 
-export const initializeApp = () => (dispatch) => {
-  let promise = dispatch(loginThunk());
-
-  Promise.all([promise]).then(() => dispatch(initializedSuccess()));
+export const initializeApp = () => async(dispatch) => {
+  let promise = await dispatch(loginThunk());
+  
+   dispatch(initializedSuccess());
 };
 
 export default appReducer;
