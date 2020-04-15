@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/IT-Camasutra/static/css/main.d38ce0ee.chunk.css",
-    "main.js": "/IT-Camasutra/static/js/main.f8c4ffce.chunk.js",
-    "main.js.map": "/IT-Camasutra/static/js/main.f8c4ffce.chunk.js.map",
+    "main.js": "/IT-Camasutra/static/js/main.515e36d7.chunk.js",
+    "main.js.map": "/IT-Camasutra/static/js/main.515e36d7.chunk.js.map",
     "runtime-main.js": "/IT-Camasutra/static/js/runtime-main.23841bd0.js",
     "runtime-main.js.map": "/IT-Camasutra/static/js/runtime-main.23841bd0.js.map",
     "static/js/2.3aa045de.chunk.js": "/IT-Camasutra/static/js/2.3aa045de.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/4.519e9763.chunk.js": "/IT-Camasutra/static/js/4.519e9763.chunk.js",
     "static/js/4.519e9763.chunk.js.map": "/IT-Camasutra/static/js/4.519e9763.chunk.js.map",
     "index.html": "/IT-Camasutra/index.html",
-    "precache-manifest.a5f6826abfde5d814a5bd030c1b49b95.js": "/IT-Camasutra/precache-manifest.a5f6826abfde5d814a5bd030c1b49b95.js",
+    "precache-manifest.f65021b0574aa93ebf07589fcbbfc03a.js": "/IT-Camasutra/precache-manifest.f65021b0574aa93ebf07589fcbbfc03a.js",
     "service-worker.js": "/IT-Camasutra/service-worker.js",
     "static/css/3.3bd1bb7b.chunk.css.map": "/IT-Camasutra/static/css/3.3bd1bb7b.chunk.css.map",
     "static/css/4.06f99d08.chunk.css.map": "/IT-Camasutra/static/css/4.06f99d08.chunk.css.map",
@@ -27,6 +27,6 @@
     "static/js/runtime-main.23841bd0.js",
     "static/js/2.3aa045de.chunk.js",
     "static/css/main.d38ce0ee.chunk.css",
-    "static/js/main.f8c4ffce.chunk.js"
+    "static/js/main.515e36d7.chunk.js"
   ]
 }

@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db1dcd2e212311df40ad4e58aa2c0cfb",
+    "revision": "82d8cf285f1aa31522811adc65548d47",
     "url": "/IT-Camasutra/index.html"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IT-Camasutra/static/css/4.06f99d08.chunk.css"
   },
   {
-    "revision": "60b19fc9e1c3d2ed3b13",
+    "revision": "b1c9a2f030decd91b2d2",
     "url": "/IT-Camasutra/static/css/main.d38ce0ee.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/IT-Camasutra/static/js/4.519e9763.chunk.js"
   },
   {
-    "revision": "60b19fc9e1c3d2ed3b13",
-    "url": "/IT-Camasutra/static/js/main.f8c4ffce.chunk.js"
+    "revision": "b1c9a2f030decd91b2d2",
+    "url": "/IT-Camasutra/static/js/main.515e36d7.chunk.js"
   },
   {
     "revision": "774acd2b7cd8002cd7ab",
