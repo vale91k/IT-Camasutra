@@ -1,12 +1,16 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./ProfileInfo.module.css";
 import userPhoto from "../../../assets/images/user.jpg";
 import ProfileStatusWithHooks from "./Status/ProfileStatusWithHooks";
-
+import InfoBlock from './InfoBlock/InfoBlock'
+import EditModeInfoBlock from './InfoBlock/EditModeInfoBlock'
 
 
 
 const ProfileInfo = ({profile, isOwner, status, updateStatusThunk, savePhoto,  ...props}) => {
+  
+const [editMode, setEditMode] = useState(false)
+
 
   const onMainPhotoSelected = (e) => {
     if (e.target.files[0]) {
@@ -16,13 +20,6 @@ const ProfileInfo = ({profile, isOwner, status, updateStatusThunk, savePhoto,  .
 
   return (
     <div className={styles.content}>
-      <div className={styles.topPicture}>
-        <img
-          src="https://i.pinimg.com/originals/dc/ce/b1/dcceb1644c13f70559ab0fbce2f03d22.jpg"
-          alt="/"
-        />
-      </div>
-
       <div className={styles.discription}>
         <div className={styles.avatar}>
           {<img src={profile.photos.small || userPhoto} />}
@@ -34,6 +31,10 @@ const ProfileInfo = ({profile, isOwner, status, updateStatusThunk, savePhoto,  .
           profile={profile}
         />
       </div>
+      
+      {editMode ? <EditModeInfoBlock isOwner={isOwner} setEditMode={setEditMode} profile={profile}/> : <InfoBlock profile={profile} isOwner={isOwner} setEditMode={setEditMode}/>
+      }
+      
     </div>
   );
 };
