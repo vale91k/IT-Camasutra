@@ -3,11 +3,11 @@ import styles from "./ProfileInfo.module.css";
 import userPhoto from "../../../assets/images/user.jpg";
 import ProfileStatusWithHooks from "./Status/ProfileStatusWithHooks";
 import InfoBlock from './InfoBlock/InfoBlock'
-import EditModeInfoBlock from './InfoBlock/EditModeInfoBlock'
+import InfoBlockForm from './InfoBlock/InfoBlockForm'
 
 
 
-const ProfileInfo = ({profile, isOwner, status, updateStatusThunk, savePhoto,  ...props}) => {
+const ProfileInfo = ({profile, isOwner, status, updateStatusThunk, savePhoto, saveProfile,  ...props}) => {
   
 const [editMode, setEditMode] = useState(false)
 
@@ -17,7 +17,11 @@ const [editMode, setEditMode] = useState(false)
       savePhoto(e.target.files[0])
     }
    }
-
+const onSubmit = (formData) => {
+  console.log(formData)
+  saveProfile(formData)
+  setEditMode(false)
+}
   return (
     <div className={styles.content}>
       <div className={styles.discription}>
@@ -32,7 +36,7 @@ const [editMode, setEditMode] = useState(false)
         />
       </div>
       
-      {editMode ? <EditModeInfoBlock isOwner={isOwner} setEditMode={setEditMode} profile={profile}/> : <InfoBlock profile={profile} isOwner={isOwner} setEditMode={setEditMode}/>
+      {editMode ? <InfoBlockForm onSubmit={onSubmit} isOwner={isOwner} setEditMode={setEditMode} profile={profile}/> : <InfoBlock profile={profile} isOwner={isOwner} setEditMode={setEditMode}/>
       }
       
     </div>

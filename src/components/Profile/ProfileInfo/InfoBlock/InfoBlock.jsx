@@ -24,7 +24,7 @@ const InfoBlock = ({ profile, isOwner, setEditMode }) => {
       </div>
       <div>
         <div>
-          <b>Looking For a Job:</b>{" "}
+          <b>Looking For a Job:</b>
           {lookingForAJob ? lookingForAJob && lookingForAJobDescription : "net"}
         </div>
       </div>
@@ -35,7 +35,7 @@ const InfoBlock = ({ profile, isOwner, setEditMode }) => {
         </div>
       )}
       <div>
-        <b>Contacts:</b>{" "}
+        <b>Contacts:</b>
         {Object.keys(contacts).map((key) => {
           return (
             <Contact

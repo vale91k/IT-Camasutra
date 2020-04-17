@@ -113,4 +113,14 @@ export const savePhoto = (file) => {
     }
   };
 };
+
+export const saveProfile = (formData) => {
+  return async (dispatch) => {
+    debugger
+    let response = await profileAPI.saveProfileApi(formData);
+    if (response.data.resultCode === 0) {
+     console.log('POLY4iLOS!')
+    }
+  };
+};
 export default profileReducer;

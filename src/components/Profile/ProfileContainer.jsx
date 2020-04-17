@@ -5,6 +5,7 @@ import {savePhoto,
   setUsersPageThunk,
   updateStatusThunk,
   getStatusThunk,
+  saveProfile
 } from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
@@ -48,6 +49,7 @@ class ProfileContainer extends React.Component {
           <Preloader />
         ) : (
           <Profile
+          saveProfile={this.props.saveProfile}
             isOwner={!this.props.match.params.userId}
             updateStatusThunk={this.props.updateStatusThunk}
             status={this.props.status}
@@ -76,7 +78,8 @@ export default compose(
     setUsersPageThunk,
     updateStatusThunk,
     getStatusThunk,
-    savePhoto
+    savePhoto,
+    saveProfile
   }),
   withRouter,
   withAuthRedirect

@@ -46,6 +46,26 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
           })
+    },
+    saveProfileApi({fullName, aboutMe, lookingForAJob, lookingForAJobDescription, vk}) {
+        debugger
+        return instance.put('profile', {
+            aboutMe: aboutMe,
+            contacts: {
+                facebook: null,
+                github: null,
+                instagram: null,
+                mainLink: null,
+                twitter: null,
+                vk: vk || null,
+                website: null,
+                youtube: null
+            },
+            lookingForAJob: lookingForAJob ,
+            lookingForAJobDescription: lookingForAJobDescription,
+            fullName: fullName
+        }
+)
     }
 }
 export const authAPI = { 
