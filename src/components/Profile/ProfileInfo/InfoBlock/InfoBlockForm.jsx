@@ -1,17 +1,19 @@
 import React from "react";
 import { reduxForm } from "redux-form";
-import styles from "./InfoBlock.module.css";
+import styles from "../../../common/FormsControls/FormsControls.module.css";
 import Preloader from "../../../common/Preloader/Preloader";
+import { required, email, url } from 'redux-form-validators'
 import {
   createField,
   Element,
 } from "../../../common/FormsControls/FormsControls";
 import { maxLength } from "../../../../utils/validators/validators";
 
+const Input = Element("input");
 
-
-const InfoBlockForm = ({ profile, isOwner, setEditMode, handleSubmit }) => {
-  const Input = Element("input");
+const InfoBlockForm = ({ profile, isOwner, setEditMode, handleSubmit, initialValues, error }) => {
+ 
+  
   const {
     lookingForAJob,
     fullName,
@@ -20,7 +22,7 @@ const InfoBlockForm = ({ profile, isOwner, setEditMode, handleSubmit }) => {
     lookingForAJobDescription,
   } = profile;
   const { github, vk, website } = contacts;
-  
+ 
 
   return (
     <form onSubmit={handleSubmit}>
@@ -29,43 +31,40 @@ const InfoBlockForm = ({ profile, isOwner, setEditMode, handleSubmit }) => {
           <button>SAVE</button>
         </div>
       )}
+               {error && <div className={styles.formSummartError}>{error}</div>}
+
       <div>
         <b>Name:</b> 
-        {createField("fullName", Input, maxLength(100), {placeholder: fullName || 'Enter your name'} )}
+        {createField("fullName", Input, [], {
+         })}
       </div>
 
       <div>
         <b>Looking For a Job:</b>{" "}
         {createField("lookingForAJob", Input, [], { type: "checkbox" })}
       </div>
- <div><b>My professional skills:</b>  {createField("lookingForAJobDiscription", Input, [], {  placeholder: lookingForAJobDescription || 'My professional skills'})}</div>
+ <div><b>My professional skills:</b>  {createField("lookingForAJobDescription", Input, [required()], {})}</div>
       
         <div>
-          <b>About me:</b>  {createField("aboutMe", Input, [], {placeholder: aboutMe || 'About Me'})}
+          <b>About me:</b>  {createField("aboutMe", Input, [required()], {})}
         </div>
       
-      {/* <div>
-        <b>Contacts:</b>{" "}
+      <div>
+        <b>Contacts:</b>
+       
         {Object.keys(contacts).map((key) => {
           return (
-            <Contact
-              key={key}
-              contactTitle={key}
-              contactValue={contacts[key]}
-            />
-          );
-        })}
-      </div> */}
+            <div key={key}className={styles.contact}>
+               <b>{key}:</b>
+               {createField('contacts.'+key, Input, [], {placeholder: key})}
+               
+                </div>
+          )})}
+       </div>
     </form>
   );
 };
-const LoginReduxForm = reduxForm({ form: "inf" })(InfoBlockForm);
+const LoginReduxForm = reduxForm({ form: "edit-profile-form" })(InfoBlockForm);
 
-const Contact = ({ contactTitle, contactValue }) => {
-  return (
-    <div>
-      <b>{contactTitle} :</b> {contactValue}
-    </div>
-  );
-};
+
 export default LoginReduxForm;

@@ -10,7 +10,7 @@ const InfoBlock = ({ profile, isOwner, setEditMode }) => {
     aboutMe,
     lookingForAJobDescription,
   } = profile;
-  const { github, vk, website } = contacts;
+ 
 
   return (
     <div>
@@ -25,7 +25,10 @@ const InfoBlock = ({ profile, isOwner, setEditMode }) => {
       <div>
         <div>
           <b>Looking For a Job:</b>
-          {lookingForAJob ? lookingForAJob && lookingForAJobDescription : "net"}
+          {lookingForAJob ? "da" : "net"}
+          <div>
+            <b> My professional skills: </b> {lookingForAJobDescription}
+          </div>
         </div>
       </div>
 

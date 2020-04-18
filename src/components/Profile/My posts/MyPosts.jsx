@@ -18,7 +18,7 @@ const MyPosts = props => {
       message={p.message}
       avatar={p.avatar}
       likeCount={p.likeCount}
-      key={rid}
+      key={p.likeCount}
     />
   ));
 
