@@ -1,11 +1,12 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import {savePhoto,
+import {
+  savePhoto,
   setUsersPageThunk,
   updateStatusThunk,
   getStatusThunk,
-  saveProfile
+  saveProfile,
 } from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 import { withRouter } from "react-router-dom";
@@ -18,9 +19,9 @@ class ProfileContainer extends React.Component {
     let userId = this.props.match.params.userId;
 
     if (!userId) {
-      userId = this.props.id;
+      userId = this.props.id; // айдишник из стейта, если мы залогинились, если сидим на чисто /profile без айди
       if (!userId) {
-        this.props.history.push("/login");
+        this.props.history.push("/login"); // history.push это с реакт роутер дома функция, редиректит на логин.
       }
     }
     this.props.setUsersPageThunk(userId);
@@ -28,17 +29,15 @@ class ProfileContainer extends React.Component {
     this.props.getStatusThunk(userId);
   }
   componentDidMount() {
-   
     this.refreshProfile();
   }
 
   componentDidUpdate(prevProps) {
-    
     if (this.props.match.params.userId !== prevProps.match.params.userId) {
-      if (Number(prevProps.match.params.userId) !== this.props.authorizedUserId) {
-        
+      if (
+        Number(prevProps.match.params.userId) !== this.props.authorizedUserId
+      ) {
         this.refreshProfile();
-        
       }
     }
   }
@@ -49,8 +48,8 @@ class ProfileContainer extends React.Component {
           <Preloader />
         ) : (
           <Profile
-          saveProfile={this.props.saveProfile}
-            isOwner={!this.props.match.params.userId}
+            saveProfile={this.props.saveProfile}
+            isOwner={!this.props.match.params.userId} // мы владелец страницы, если находимся на /profile без айдишника.
             updateStatusThunk={this.props.updateStatusThunk}
             status={this.props.status}
             profile={this.props.profile}
@@ -79,7 +78,7 @@ export default compose(
     updateStatusThunk,
     getStatusThunk,
     savePhoto,
-    saveProfile
+    saveProfile,
   }),
   withRouter,
   withAuthRedirect

@@ -133,6 +133,7 @@ export const saveProfile = (formData) => {
           ? response.data.messages[0]
           : "Some Error";
       dispatch(stopSubmit("edit-profile-form", {_error: message}));
+      
       return Promise.reject(message)
     }
   };

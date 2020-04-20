@@ -22,7 +22,9 @@ const ProfileInfo = ({
     }
   };
   const onSubmit = (formData) => {
+    
     saveProfile(formData).then(() => {
+      
       setEditMode(false);
     });
   };
