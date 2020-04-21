@@ -5,7 +5,7 @@ import "./App.css";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Navbar from "./components/Navbar/Navbar";
 // import ProfileContainer from "./components/Profile/ProfileContainer";
-import { Route, withRouter } from "react-router-dom";
+import { Route, withRouter, Switch, Redirect } from "react-router-dom";
 import TestContainer from "./components/Test/TestContainer";
 import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
@@ -17,7 +17,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/redux-store";
 import Picture from "./components/common/Preloader/f5baef4b6b6677020ab8d091ef78a3bc_w200.gif";
-import {withSuspense} from "./hoc/withSuspense";
+import { withSuspense } from "./hoc/withSuspense";
 
 const DialogsContainer = React.lazy(() =>
   import("./components/Dialogs/DialogsContainer")
@@ -27,33 +27,55 @@ const ProfileContainer = React.lazy(() =>
 );
 
 class App extends React.Component {
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert("SOME ERROR ACCURED");
+};
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+  componentWillUnmount() {
+    window.removeEventListener(
+      "unhandledrejection",
+      this.catchAllUnhandledErrors
+    );
   }
   render() {
     if (!this.props.initialized) {
       return <img src={Picture} />;
     }
-    
+
     return (
       <div className="app-wrapper">
         <HeaderContainer />
         <Navbar />
         <div className="app-wrapper-content">
-          <Route
-            path="/dialogs"
-            render={
-            
-                withSuspense(DialogsContainer)
-             
-            }
-          />
-          <Route path="/profile/:userId?" render={ withSuspense(ProfileContainer)} />
-          <Route path="/users" render={() => <UsersContainer />} />
-          <Route path="/test" render={() => <TestContainer />} />
-          <Route path="/news" render={() => <News />} />
-          <Route path="/settings" render={() => <Settings />} />
-          <Route path="/login" render={() => <LoginPage />} />
+          <Switch>
+            <Route exact path="/" render={() => <Redirect to="/profile" />} />
+
+            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route
+              path="/profile/:userId?"
+              render={withSuspense(ProfileContainer)}
+            />
+            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/test" render={() => <TestContainer />} />
+            <Route path="/news" render={() => <News />} />
+            <Route path="/settings" render={() => <Settings />} />
+
+            <Route path="/login" render={() => <LoginPage />} />
+            <Route
+              path="*"
+              render={() => (
+                <div>
+                  <div>PAGE NOT FOUND</div>
+                  <div>
+                    <img src={Picture} />
+                  </div>
+                </div>
+              )}
+            />
+          </Switch>
         </div>
       </div>
     );

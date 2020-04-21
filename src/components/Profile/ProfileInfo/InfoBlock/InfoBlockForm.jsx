@@ -19,7 +19,7 @@ const InfoBlockForm = ({
   initialValues,
   error,
 }) => {
-  debugger
+  
   const {
     lookingForAJob,
     fullName,

@@ -103,11 +103,18 @@ export const getStatusThunk = (id = 2) => {
 };
 
 export const updateStatusThunk = (status) => {
+ 
   return async (dispatch) => {
-    let response = await profileAPI.updateStatus(status);
+    try {
+      let response = await profileAPI.updateStatus(status);
     if (response.data.resultCode === 0) {
       dispatch(setStatus(status));
     }
+    } catch(error) {
+      console.log(error)
+      debugger
+    }
+    
   };
 };
 export const savePhoto = (file) => {

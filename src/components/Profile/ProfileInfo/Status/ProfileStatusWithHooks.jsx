@@ -12,8 +12,9 @@ const ProfileStatusWithHooks = (props) => {
     setEditMode(true)
   }
   const deactivateEditMode =  (e)=> {
-    setEditMode(false)
+    
     props.updateStatusThunk(e.target.value)
+    setEditMode(false)
   }
   const handleFocus = (event) => event.target.select()
   const onStatusChange = (e) => {
