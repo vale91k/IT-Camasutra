@@ -10,7 +10,8 @@ import { Redirect } from "react-router-dom";
 import styles from "../common/FormsControls/FormsControls.module.css";
 
 const Input = Element("input");
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
+  
   return (
     <form onSubmit={handleSubmit}>
       {createField("login", Input, [required, email], {
@@ -22,9 +23,10 @@ const LoginForm = ({ handleSubmit, error }) => {
         placeholder: "Please enter your Password there",
       })}
       {createField("rememberMe", "input", null, { type: "checkbox" })}
-
+      {captchaUrl && <img src={captchaUrl}/>}
+      {captchaUrl && createField("captcha", Input, [required], { placeholder: "captch athere" })} 
       {error && <div className={styles.formSummartError}>{error}</div>}
-
+     
       <div>
         <button>Login</button>
       </div>
@@ -34,11 +36,11 @@ const LoginForm = ({ handleSubmit, error }) => {
 
 const LoginReduxForm = reduxForm({ form: "login" })(LoginForm);
 
-export const Login = ({ LoginPageThunk, isAuth }) => {
+export const Login = ({ LoginPageThunk, isAuth, captchaUrl }) => {
   const onSubmit = (formData) => {
     console.log(formData);
-    let { login, password, rememberMe = false } = formData;
-    LoginPageThunk(login, password, rememberMe);
+    let { login, password, rememberMe = false, captcha } = formData;
+    LoginPageThunk(login, password, rememberMe, captcha);
   };
   if (isAuth) {
     return <Redirect to={"/profile"} />;
@@ -47,7 +49,8 @@ export const Login = ({ LoginPageThunk, isAuth }) => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm captchaUrl={captchaUrl} onSubmit={onSubmit} />
+
     </div>
   );
 };
@@ -55,6 +58,7 @@ export const Login = ({ LoginPageThunk, isAuth }) => {
 const MapStateToPorps = (state) => {
   return {
     isAuth: state.auth.isAuth,
+    captchaUrl: state.auth.captchaUrl
   };
 };
 
