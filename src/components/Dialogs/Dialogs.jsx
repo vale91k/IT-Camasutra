@@ -1,46 +1,39 @@
-import React from "react";
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
-import s from "./Dialogs.module.css";
-import DialogItem from "./DialogItem/DialogItem";
-import Message from "./Message/Message";
-import DialogTextArea from "./DialogTextArea/DialogTextArea";
-import { reduxForm } from 'redux-form';
+import React from 'react';
+import { reduxForm, reset } from 'redux-form';
+
+import styles from './Dialogs.module.css';
+
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
+import DialogTextArea from './DialogTextArea/DialogTextArea';
 
 
 
+const afterSubmit = (result, dispatch) => dispatch(reset('dialogs'));
+const DialogTextForm = reduxForm({ form: 'dialogs', onSubmitSuccess: afterSubmit })(DialogTextArea);
 
+const Dialogs = ({ dialogs, messages, addMessageThunk , ...props}) => {
+ 
+ let dialogId = props.match.params.dialogId
+ 
+	const dialogsElements = dialogs.map((d, i) => <DialogItem key={d.id} name={d.name} id={d.id} avatar={d.avatar} />);
 
-const DialogTextForm = reduxForm({form: 'login'})(DialogTextArea);
+	const messagesElements = messages[dialogId ? dialogId : 1].map((m, i) => <Message key={i} message={m.message} id={m.id} date={m.date} />);
 
-const Dialogs = props => {
+	const onSubmit = ({ newMessageBody }) => {
+		const time = new Date();
+		addMessageThunk(newMessageBody, time.toLocaleTimeString());
+	};
 
- const [rId] = React.useState(nanoid)
+	return (
+		<div className={styles.dialogs}>
 
-  let dialogsElements = props.state.dialogs.map(d => (
-    <DialogItem key={rId} name={d.name} id={d.id} avatar={d.avatar} />
-  ));
+			<div className={styles.dialogsItems}>{dialogsElements}</div>
+			<div className={styles.messageElements}>{messagesElements}</div>
 
-  let messagesElements = props.state.messages.map(m => (
-    <Message key={rId} message={m.message} id={m.id} />
-  ));
-
-const onSubmit =(www) => {
-  console.log(www.newMessageBody)
-  props.addMessage(www.newMessageBody)
-}
-
-
-  return (
-    <div className={s.dialogs}>
-      <div className={s.dialogsItems}>{dialogsElements}</div>
-
-      <div className={s.messages}>{messagesElements}</div>
-      
-      <DialogTextForm onSubmit={onSubmit} addMessage={props.addMessage} onMessageChange={props.onMessageChange} newMessageText={props.state.newMessageText}/>
-    </div>
-  );
+			<DialogTextForm onSubmit={onSubmit} />
+		</div>
+	);
 };
-
 
 export default Dialogs;

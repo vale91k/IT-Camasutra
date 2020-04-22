@@ -1,9 +1,14 @@
-import React from 'react'
-import * as pic from './../../common/Preloader/Header_Preloader.gif'
-let Preloader =(props) => {
- 
-    
-return (<div><img src={pic} alt='https://i.gifer.com/CK1.gif'/></div>)
-}
+import React from "react";
+import * as mainPic from "./../../common/Preloader/src/LoadingCat.gif";
+import * as altPic from "./../../common/Preloader/src/LoadingCat_alt.gif";
+import styles from './Preloader.module.css'
 
-export default Preloader
+let Preloader = () => {
+  return (
+    <div className={styles.preloaderPic}>
+      <img src={mainPic} alt={altPic} />
+    </div>
+  );
+};
+
+export default Preloader;

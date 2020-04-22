@@ -15,7 +15,6 @@ const ProfileInfo = ({
   ...props
 }) => {
   const [editMode, setEditMode] = useState(false);
-
   const onMainPhotoSelected = (e) => {
     if (e.target.files[0]) {
       savePhoto(e.target.files[0]);

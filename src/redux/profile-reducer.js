@@ -112,7 +112,7 @@ export const updateStatusThunk = (status) => {
     }
     } catch(error) {
       console.log(error)
-      debugger
+     
     }
     
   };

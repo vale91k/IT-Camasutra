@@ -1,0 +1,59 @@
+import 
+.errorPic {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.errorPic img {
+	height: 200px;
+	width: 250px;
+	object-fit: cover;
+	border-radius: 100%;
+	border: 3px solid #3f4257;
+	object-fit: cover;
+}
+.errorText h1 {
+	font-family: 'Fredoka One', cursive;
+	font-size: 98px;
+	margin: 0px;
+	color: #ff5e3a;
+    text-transform: uppercase;
+ 
+    
+}
+.errorText h2 {
+   
+
+   
+    
+}
+.errorText h3 {
+    
+   
+    
+}
+.errorArea {
+	align-items: center;
+	text-align: center;
+}
+.errorArea a {
+	font-family: 'Cabin', sans-serif;
+	display: inline-block;
+	padding: 10px 25px;
+	background-color: #ff5833;
+	border: none;
+    border-radius: 40px;
+    border: 1px solid black;
+    
+	color: black;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-decoration: none;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+}
+
+.errorArea a:hover {
+	background-color: #f8461e;
+}

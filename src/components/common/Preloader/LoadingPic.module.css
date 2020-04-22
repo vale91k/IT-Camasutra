@@ -1,0 +1,12 @@
+.loadingPic {
+   text-align: center;
+  }
+
+  .loadingPic img {
+      padding-top: 40px;
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+border-radius: 30%;
+    
+  }

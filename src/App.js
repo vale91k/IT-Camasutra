@@ -1,100 +1,78 @@
-import React, { Suspense } from "react";
-import { connect } from "react-redux";
-import { initializeApp } from "./redux/app-reducer";
-import "./App.css";
-import HeaderContainer from "./components/Header/HeaderContainer";
-import Navbar from "./components/Navbar/Navbar";
-// import ProfileContainer from "./components/Profile/ProfileContainer";
-import { Route, withRouter, Switch, Redirect } from "react-router-dom";
-import TestContainer from "./components/Test/TestContainer";
-import News from "./components/News/News";
-import Settings from "./components/Settings/Settings";
-// import DialogsContainer from "./components/Dialogs/DialogsContainer";
-import UsersContainer from "./components/Users/UsersContainer";
-import LoginPage from "./components/Login/Login";
-import { compose } from "redux";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./redux/redux-store";
-import Picture from "./components/common/Preloader/f5baef4b6b6677020ab8d091ef78a3bc_w200.gif";
-import { withSuspense } from "./hoc/withSuspense";
+import React from 'react';
+import store from './redux/redux-store';
+import { connect, Provider } from 'react-redux';
+import { compose } from 'redux';
+import { Route, withRouter, Switch, Redirect, BrowserRouter } from 'react-router-dom';
+import { initializeApp } from './redux/app-reducer';
+import { getInitialized } from './redux/selectors/app-selectors';
 
-const DialogsContainer = React.lazy(() =>
-  import("./components/Dialogs/DialogsContainer")
-);
-const ProfileContainer = React.lazy(() =>
-  import("./components/Profile/ProfileContainer")
-);
+import styles from './App.module.css';
+
+import HeaderContainer from './components/Header/HeaderContainer';
+import Navbar from './components/Navbar/Navbar';
+import ProfileContainer from './components/Profile/ProfileContainer';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import UsersContainer from './components/Users/UsersContainer';
+import News from './components/News/News';
+import Settings from './components/Settings/Settings';
+import LoginPage from './components/Login/Login';
+import TestContainer from './components/Test/TestContainer';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+
+import LoadingPic from './components/common/Preloader/LoadingPic';
 
 class App extends React.Component {
-  catchAllUnhandledErrors = (promiseRejectionEvent) => {
-    alert("SOME ERROR ACCURED");
-};
-  componentDidMount() {
-    this.props.initializeApp();
-    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
-  }
-  componentWillUnmount() {
-    window.removeEventListener(
-      "unhandledrejection",
-      this.catchAllUnhandledErrors
-    );
-  }
-  render() {
-    if (!this.props.initialized) {
-      return <img src={Picture} />;
-    }
+	catchAllUnhandledErrors = (promiseRejectionEvent) => {
+		alert('SOME ERROR ACCURED');
+	};
 
-    return (
-      <div className="app-wrapper">
-        <HeaderContainer />
-        <Navbar />
-        <div className="app-wrapper-content">
-          <Switch>
-            <Route exact path="/" render={() => <Redirect to="/profile" />} />
+	componentDidMount() {
+		this.props.initializeApp();
+		window.addEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+	}
+	componentWillUnmount() {
+		window.removeEventListener('unhandledrejection', this.catchAllUnhandledErrors);
+	}
 
-            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
-            <Route
-              path="/profile/:userId?"
-              render={withSuspense(ProfileContainer)}
-            />
-            <Route path="/users" render={() => <UsersContainer />} />
-            <Route path="/test" render={() => <TestContainer />} />
-            <Route path="/news" render={() => <News />} />
-            <Route path="/settings" render={() => <Settings />} />
+	render() {
+		if (!this.props.initialized) {
+			return <LoadingPic />;
+		}
 
-            <Route path="/login" render={() => <LoginPage />} />
-            <Route
-              path="*"
-              render={() => (
-                <div>
-                  <div>PAGE NOT FOUND</div>
-                  <div>
-                    <img src={Picture} />
-                  </div>
-                </div>
-              )}
-            />
-          </Switch>
-        </div>
-      </div>
-    );
-  }
+		return (
+			<div className={styles.appWrapper}>
+				<HeaderContainer />
+				<Navbar />
+				<div className={styles.appWrapperContent}>
+					<Switch>
+						<Route exact path="/" render={() => <Redirect to="/profile" />} />
+						<Route path="/dialogs/:dialogId?" render={() => <DialogsContainer />} />
+						<Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+						<Route path="/users" render={() => <UsersContainer />} />
+						<Route path="/test" render={() => <TestContainer />} />
+						<Route path="/news" render={() => <News />} />
+						<Route path="/settings" render={() => <Settings />} />
+						<Route path="/login" render={() => <LoginPage />} />
+						<Route path="*"	render={() => <ErrorPage />} />
+					</Switch>
+				</div>
+			</div>
+		);
+	}
 }
+
 const mapStateToProps = (state) => {
-  return { initialized: state.app.initialized };
+	return { initialized: getInitialized(state)};
 };
-const AppContainer = compose(
-  withRouter,
-  connect(mapStateToProps, { initializeApp })
-)(App);
-const SamuraiJSApp = () => {
-  return (
-    <BrowserRouter>
-      <Provider store={store}>
-        <AppContainer />
-      </Provider>
-    </BrowserRouter>
-  );
+
+const AppContainer = compose(withRouter, connect(mapStateToProps, { initializeApp }))(App);
+const SocialNetworkApp = () => {
+	return (
+		<BrowserRouter>
+			<Provider store={store}>
+				<AppContainer />
+			</Provider>
+		</BrowserRouter>
+	);
 };
-export default SamuraiJSApp;
+export default SocialNetworkApp;

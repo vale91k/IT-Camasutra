@@ -4,8 +4,9 @@
   grid-template-areas:
     "d m"
     "d t";
-    grid-template-columns: 3fr 10fr;
-    grid-template-rows: 6fr 1.5fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr 100px;
+   
 }
 .dialogsItems {
   grid-area: d;
@@ -13,7 +14,7 @@
   border-right: 1px solid #3f4257;
 }
 
-.messages {
+.messageElements {
   padding: 10px;
   grid-area: m;
 }

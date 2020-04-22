@@ -1,9 +1,50 @@
-.message {
-  font-style: italic;
-}
 .rightMessage {
-  text-align: right;
-}
-.leftMessage {
+  padding: 5px;
+  clear: both;
+  float: right;
   text-align: left;
+  padding: 8px 15px;
+  margin: 7px;
+  background-color: white;
+border: 1px solid #3f4257;
+border-radius: 10px 10px 0px 10px;
+
+}
+.rightTime {
+  padding-top: 10px;
+  padding-left: 10px;
+  float: right;
+  font-size: 12px;
+}
+
+
+.leftMessage {
+  padding: 5px;
+  clear: both;
+  float: left;
+  text-align: left;
+  padding: 8px 15px;
+  margin: 7px;
+  background-color: white;
+border: 1px solid #3f4257;
+border-radius: 10px 10px 10px 0px;
+  
+  
+}
+.leftTime {
+  padding-top: 10px;
+  padding-left: 10px;
+  float: right;
+  font-size: 12px;
+}
+.leftMessage .leftTextMessage {
+  float: left;
+  overflow-wrap: break-word
+  ;
+  max-width: 400px;
+}
+.rightMessage .rightTextMessage {
+  float: left;
+  overflow-wrap: break-word;
+  max-width: 400px;
 }
