@@ -1,27 +1,30 @@
 .nav {
-  grid-area: n;
+  
   background-color: rgb(187,215,236);
   padding: 20px;
-  width: 160px;
-  
-  
+  grid-area: n;
+  height: 200px;
+  width: 159px;
+  border-right: 1px solid #3f4257;
 }
+
 .item a {
   color: #3f4257;
-  /* font-weight: bold; */
   text-decoration: none;
-  font-size: 18px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif; 
+   font-size: 22px;
 }
 .item a.activeLink { 
-  font-size: 24px;
-  color: #ff5e3a;
+  font-size: 30px;
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+  color: #3f4257;
   font-weight: bold;
 }
 .fullPart {
  
     display: flex;
     flex-wrap: wrap;
-    border-right: 1px solid #3f4257;
+     
   }
   .navbarPart {
     grid-area: n;
@@ -35,7 +38,10 @@
 
   }
   .otherPart {
-    grid-area: o;
+    
     background-color: rgb(187,215,236);
-width: 200px;
+width: 199px;
+height: 1fr;
+border-right: 1px solid #3f4257;
+
   }

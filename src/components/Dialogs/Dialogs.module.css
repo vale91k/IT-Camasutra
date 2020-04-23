@@ -1,4 +1,5 @@
 .dialogs {
+  
   display: grid;
   /* grid-template-columns: 4fr 11fr; */
   grid-template-areas:
@@ -12,6 +13,8 @@
   grid-area: d;
   padding: 20px;
   border-right: 1px solid #3f4257;
+  margin-left: -1px;
+  border-left: 1px solid #3f4257;
 }
 
 .messageElements {

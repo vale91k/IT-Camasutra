@@ -2,6 +2,8 @@ import React from "react";
 import Paginator from "../common/Paginator/Pagenator";
 import User from "./User";
 import Preloader from "../common/Preloader/Preloader";
+import styles from './Users.module.css'
+
 
 let Users = ({
   onClick,
@@ -17,7 +19,7 @@ let Users = ({
 }) => {
 
   return (
-    <div>
+    <div className={styles.usersPage}>
       <Paginator
         onClick={onClick}
         currentPage={currentPage}

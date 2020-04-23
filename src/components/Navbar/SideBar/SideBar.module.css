@@ -1,12 +1,12 @@
 .sideb {
+  grid-area: f;
   background-color: #ff5e3a;
   padding-top: 35px;
-  width: 200px;
-  height: 150px;
+ width: 199px;
   /* border-right: 1px solid #3f4257; */
   border-top: 1px solid #3f4257;
   border-bottom: 1px solid #3f4257;
-
+border-right: 1px solid #3f4257;
   }
 .headerBar {
   font-size: 28px;
