@@ -52,44 +52,36 @@ let initialState = {
       { id: 2, message: "Bye!", date: '10:53:34 PM' }
     ],
     2: [
-      { id: 1, message: "test2", date: '9:46:19 PM' },
-      { id: 2, message: 'test2test2test2', date: '9:47:01 PM' },
-      { id: 1, message: "test2test2test2test2test2test2test2", date: '10:52:30 PM' },
-      { id: 2, message: "test2test2test2test2", date: '10:52:45 PM' },
-      { id: 1, message: "test2test2test2test2test2test2", date: '10:52:59 PM' },
-      { id: 2, message: "test2", date: '10:53:34 PM' }
+      { id: 1, message: "test2_", date: '9:46:19 PM' },
+      { id: 2, message: 'test2_test2_test2_', date: '9:47:01 PM' },
+      { id: 1, message: "test2_test2_test2_test2_test2_test2_test2_test2_", date: '10:52:30 PM' },
+      { id: 2, message: "test2_test2_test2_test2_", date: '10:52:45 PM' },
+      { id: 1, message: "test2_test2_test2_", date: '10:52:59 PM' },
+      { id: 2, message: "test2_", date: '10:53:34 PM' }
     ],
     3: [
-      { id: 1, message: "test3", date: '9:46:19 PM' },
-      { id: 2, message: "test3test3test3test3", date: '9:47:01 PM' },
-      { id: 1, message: "test3test3test3test3test3test3test3te3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3tes test3test3te3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3 test3test3te3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3t3test3tesst3test3test3test3test3test3test3test3test3test3", date: '10:52:30 PM' },
-      { id: 2, message: "test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3test3", date: '10:52:45 PM' },
-      { id: 1, message: "test3test3", date: '10:52:59 PM' },
-      { id: 2, message: "test3", date: '10:53:34 PM' }
+      { id: 1, message: "test3_", date: '9:46:19 PM' },
+      { id: 2, message: "test3_test3_test3_test3_test3_", date: '9:47:01 PM' },
+      { id: 1, message: "test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_", date: '10:52:30 PM' },
+      { id: 2, message: "test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_test3_", date: '10:52:45 PM' },
+      { id: 1, message: "test3_test3_", date: '10:52:59 PM' },
+      { id: 2, message: "test3_", date: '10:53:34 PM' }
     ],
     4: [
-      { id: 1, message: "Hi!", date: '9:46:19 PM' },
-      { id: 2, message: "What's up?", date: '9:47:01 PM' },
-      { id: 1, message: "I'am ok, and you?", date: '10:52:30 PM' },
-      { id: 2, message: "Fine! thx!", date: '10:52:45 PM' },
-      { id: 1, message: "See you tomorrow", date: '10:52:59 PM' },
-      { id: 2, message: "Bye!", date: '10:53:34 PM' }
+      { id: 1, message: "test4_test4", date: '9:46:19 PM' },
+      { id: 1, message: "test4_test4", date: '9:47:01 PM' },
+      { id: 1, message: "test4_test4", date: '10:52:30 PM' },
+      { id: 2, message: "test4_test4", date: '10:52:45 PM' },
+      { id: 1, message: "test4_test4", date: '10:52:59 PM' },
+      { id: 1, message: "test4_test4", date: '10:53:34 PM' }
     ],
     5: [
-      { id: 1, message: "Hi!", date: '9:46:19 PM' },
-      { id: 2, message: "What's up?", date: '9:47:01 PM' },
-      { id: 1, message: "I'am ok, and you?", date: '10:52:30 PM' },
-      { id: 2, message: "Fine! thx!", date: '10:52:45 PM' },
-      { id: 1, message: "See you tomorrow", date: '10:52:59 PM' },
-      { id: 2, message: "Bye!", date: '10:53:34 PM' }
+      { id: 1, message: "test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5_test5", date: '9:46:19 PM' },
+      { id: 2, message: "test5_", date: '9:47:01 PM' }
+      
     ],
     6: [
-      { id: 1, message: "Hi!", date: '9:46:19 PM' },
-      { id: 2, message: "What's up?", date: '9:47:01 PM' },
-      { id: 1, message: "I'am ok, and you?", date: '10:52:30 PM' },
-      { id: 2, message: "Fine! thx!", date: '10:52:45 PM' },
-      { id: 1, message: "See you tomorrow", date: '10:52:59 PM' },
-      { id: 2, message: "Bye!", date: '10:53:34 PM' }
+     
     ]
     
   },
@@ -106,7 +98,9 @@ const dialogsReducer = (state = initialState, action) => {
         message: action.newMessageBody,
         date: action.date
       };
-      return   { ...state, messagesHistory: {...state.messagesHistory, 1 :[...state.messagesHistory[1], newMessage]}  }
+      let userid = action.id
+   return   { ...state, messagesHistory: {...state.messagesHistory, [userid] : [...state.messagesHistory[userid], newMessage]}  }
+      
       
    
     }
@@ -119,12 +113,12 @@ const dialogsReducer = (state = initialState, action) => {
 
   
 };
-export const addMessageActionCreator = (newMessageBody, date) => ({ type: ADD_MESSAGE, newMessageBody, date });
+export const addMessageActionCreator = (newMessageBody, date, id) => ({ type: ADD_MESSAGE, newMessageBody, date, id });
 
-export const addMessageThunk = (newMessageBody, date) => {
+export const addMessageThunk = (newMessageBody, date, id) => {
 return (dispatch) => {
   
-  dispatch(addMessageActionCreator(newMessageBody, date))
+  dispatch(addMessageActionCreator(newMessageBody, date, id))
 }
 }
 export default dialogsReducer;

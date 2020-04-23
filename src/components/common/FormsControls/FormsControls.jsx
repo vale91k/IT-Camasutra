@@ -10,13 +10,15 @@ export const Element = Element => ({ input, meta, ...props }) => {
   return (
     <div className={ styles.formControl + " " + (hasError ? styles.error : "") }>
       <Element {...input} {...props} />
+     
       { hasError && <span> { meta.error } </span> }
+
     </div>
   );
 };
  export const createField = (name,  component , validate , props ) => {
    return (
-   <div>
+   <div >
      <Field name={name}  component={component} validate={validate}  {...props} />
    </div>
    )
