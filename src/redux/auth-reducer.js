@@ -95,7 +95,7 @@ export const LoginPageThunk = (email, password, rememberMe, captcha) => {
   };
 };
 
-export const Logout = () => {
+export const logout = () => {
   return (dispatch) => {
     authAPI.logout();
     let id = null;
