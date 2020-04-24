@@ -8,15 +8,16 @@
     "f c" ;
   grid-template-rows: 60px 200px 1fr ;
   grid-template-columns: 2fr 10fr;
+  background-color: #edf2f6;
   border: 1px solid #3f4257;
-  background-color: #edf2f6
-  
+
 }
 .appWrapperContent {
   grid-area: c;
   background-color: #edf2f6;
   width: 1000px;
-
+  border-left: 1px solid #3f4257;
+margin-left: -1px;
 }
 
 

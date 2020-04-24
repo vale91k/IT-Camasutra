@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./Test.module.css";
 
 class Test extends React.Component {
+
   state = {
     count: 0
   };
+  
   incButton = () => {
     if (this.state.count < 5) {
       this.setState({

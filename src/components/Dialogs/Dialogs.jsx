@@ -19,7 +19,8 @@ const Dialogs = ({ dialogs, messages, addMessageThunk, ...props }) => {
 	<DialogItem key={d.id}
 				name={d.name}
 				id={d.id}
-				avatar={d.avatar} />);
+				avatar={d.avatar}
+				dialogId={dialogId} />);
 
 	const messagesElements = messages[dialogId].map((m, i) => (
 		<Message key={i}

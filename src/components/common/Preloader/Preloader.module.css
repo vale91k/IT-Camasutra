@@ -1,18 +1,15 @@
 .preloaderPic {
-  padding-top: 20px;
-   padding-left: 20px;
-   height: 408px;
-   text-align: center;
+	padding-top: 20px;
+	padding-left: 20px;
+	height: 408px;
+	text-align: center;
+}
 
- }
-
- .preloaderPic img {
-   
-   height: 200px;
-   width: 250px;
-  object-fit: cover;
-  border-radius: 100%;
-  border: 3px solid #3f4257;
-    object-fit: cover;
-
- }
+.preloaderPic img {
+	height: 200px;
+	width: 250px;
+	object-fit: cover;
+	border-radius: 100%;
+	border: 3px solid #3f4257;
+	object-fit: cover;
+}

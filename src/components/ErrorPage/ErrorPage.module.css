@@ -35,6 +35,7 @@ import
 .errorArea {
 	align-items: center;
 	text-align: center;
+	height: 428px;
 }
 .errorArea a {
 	font-family: 'Cabin', sans-serif;

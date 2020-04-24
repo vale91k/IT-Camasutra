@@ -1,10 +1,10 @@
 import React from "react";
-import ss from "./News.module.css";
+import styles from "./News.module.css";
 
 const News = (props) => {
   
   return (
-  <div >
+  <div className={styles.newsBlock}>
     News
   </div>
   )

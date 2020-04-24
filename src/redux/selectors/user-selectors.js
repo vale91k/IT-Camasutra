@@ -22,5 +22,8 @@ export const getUsers = (state) => {
 export const getUsersSelector = (state) => {
   return getUsers(state).filter(x=> true)
 }
+export const getPortionSize = (state) => {
+  return state.usersPage.portionSize;
+};
 export const getUsersSuperSelector = createSelector(getUsers, getIsFetching, (users, isFetching) => {return users.filter(x => true)})
 

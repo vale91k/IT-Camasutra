@@ -15,18 +15,14 @@ let Users = ({
   followingInProgress,
   unfollow,
   follow,
-  isFetching
+  isFetching,
+  portionSize
 }) => {
 
   return (
     <div className={styles.usersPage}>
-      <Paginator
-        onClick={onClick}
-        currentPage={currentPage}
-        pageSize={pageSize}
-        itemsCount={totalUsersCount}
-        onPageChanged={onPageChanged}
-      />
+     
+      
 
       {isFetching ? <Preloader /> : users.map((user) => (
         <User
@@ -39,7 +35,17 @@ let Users = ({
           status={user.status}
           username={user.name}
         />
+        
       ))}
+      <Paginator
+        onClick={onClick}
+        currentPage={currentPage}
+        pageSize={pageSize}
+        portionSize={portionSize}
+        itemsCount={totalUsersCount}
+        onPageChanged={onPageChanged}
+      /> 
+      
     </div>
   );
 };

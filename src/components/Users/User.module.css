@@ -4,6 +4,7 @@
   margin: auto;
   height: 100px;
   width: 450px;
+  
   grid-template-areas:
     "l r  "
     "l r ";
