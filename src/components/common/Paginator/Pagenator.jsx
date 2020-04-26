@@ -3,85 +3,104 @@ import styles from "./Paginator.module.css";
 import cn from "classnames";
 
 
-let Paginator = ({
+const Paginator = ({
   itemsCount,
   pageSize,
   onPageChanged,
   currentPage,
-  portionSize = 10,
+  portionSize = 3,
+  selectedPage = 1
 }) => {
-  let pagesCount = Math.ceil(itemsCount / pageSize);
-  let pages = [];
+
+  // Count All Pages and push them into variable 'pages'
+  const pagesCount = Math.ceil(itemsCount / pageSize);
+  const pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-  let portionCount = Math.ceil(pagesCount / portionSize);
-  let [portionNumber, setPortionNumber] = useState(1);
-  console.log(portionNumber);
-  let leftPortionPageNumber =(portionNumber - 1) * portionSize + 1;
-  let rightPortionPageNumber = portionNumber * portionSize;
+  // Count All Portions of Pages and set the first portion
+  const portionCount = Math.ceil(pagesCount / portionSize);
+  const [portionNumber, setPortionNumber] = useState(1);
+
+
+  //Two variables : prev and next portions of pages
+  const prevPortionPage = (portionNumber - 1) * portionSize + 1;
+  const nextPortionPage = portionNumber * portionSize;
+
   return (
     <div className={styles.paginator}>
-      {portionNumber > 1 && (
-      <button onClick={()=> {
-       
-        setPortionNumber(portionNumber -1)}
-        }>
-        PREV
-        </button>
-      )}
       {/* //first page*/}
       {portionNumber > 1 && (
-        <span
+        <span 
+        className={styles.paginationButton}
         onClick={() => {
-          onPageChanged(1);
-           setPortionNumber(1)
+            onPageChanged(1);
+            setPortionNumber(1)
           }}
-        className={currentPage === 1 && styles.selectedPage}
-        className = {cn({
-          [styles.selectedPage]: currentPage === 1
-      }, styles.pageNumber) }
-                   key={1}
-      >
-        {1}
-      </span>
+          
+        >
+        &lt;&lt;
+        </span>
       )}
-  
-      {pages
+      {/* prev portion button */}
+      {portionNumber > 1 && (
+        <span 
+        className={styles.paginationButton + ' ' + styles.leftPaginatonButton}
+        onClick={() => {
+
+        onPageChanged((portionNumber - 2) * portionSize + 1);
+        setPortionNumber(portionNumber - 1)
+        }
+        }>
+          &lt;
+        </span>
+      )}
+      
+      {/* main pages */}
+      {
+      pages
         .filter((page) =>
-         page >= leftPortionPageNumber && page <= rightPortionPageNumber
-         ).map((i) => 
+          page >= prevPortionPage && page <= nextPortionPage
+        ).map((i) =>
           (
             <span
+            className={styles.paginationButton}
               onClick={() => onPageChanged(i)}
-              className={currentPage === i && styles.selectedPage}
-              className = {cn({
+              className={cn({
                 [styles.selectedPage]: currentPage === i
-            }, styles.pageNumber) }
-                         key={i}
+              },  styles.paginationPage)}
+              key={i * Math.ceil(Math.random()*100)}
             >
               {i}
             </span>
           )
         )}
-       {/* last page */}
-      {portionNumber < portionCount && (
-        <span
-        onClick={() => {
-          onPageChanged(pagesCount); 
-           setPortionNumber(Math.ceil(pagesCount / portionSize))
+     
+      {/* Next Portion */}
+      {portionCount > portionNumber && 
+      <span
+      className={styles.paginationButton + ' ' + styles.rightPaginatonButton}
+      onClick={() => {
+        onPageChanged(selectedPage + 1 * portionSize +1)
+          setPortionNumber(portionNumber + 1)
           }}
-        className={currentPage === pagesCount && styles.selectedPage}
-        className = {cn({
-          [styles.selectedPage]: currentPage === pagesCount
-      }, styles.pageNumber) }
-                   key={pagesCount}
-      >
-        {pagesCount}
-      </span>
+          >
+            &gt;
+            </span>
+            }
+       {/* last page */}
+       {portionNumber < portionCount && (
+        <span
+        className={styles.paginationButton}
+          onClick={() => {
+            onPageChanged(pagesCount);
+            setPortionNumber(Math.ceil(pagesCount / portionSize))
+          }}
+         
+        >
+          &gt;&gt;
+        </span>
       )}
-      {/* last page */}
-      {portionCount > portionNumber && <button onClick={()=> setPortionNumber(portionNumber +1)}>NEXT</button>}
     </div>
   );
 };

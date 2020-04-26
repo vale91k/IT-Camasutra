@@ -1,18 +1,47 @@
+
+.paginationPage {
+  background-color: #edf2f6;
+  color: #3f4257;
+  padding: 5px;
+  border: 3px solid #3f4257;
+  font-size: 34px;
+  font-family: 'Bangers', cursive;
+}
 .selectedPage {
   font-weight: bold;
   font-size: 20px;
+  margin-left: 3px;
+  margin-right: 3px;
+  color: #ff5e3a;
+  text-shadow: -2px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-size: 40px;
+	font-family: 'Bangers', cursive;
+
 }
 .paginator {
   width: 100%;
   margin: 10px;
   text-align: center;
+  margin-bottom: 20px;
+
 }
-.pageNumber {
-  padding: 2px;
-  border: 1px solid grey;
-}
+
 
 .pageNumber.selectedPage {
   font-weight: bold;
   border-color: black;
+}
+.paginationButton {
+  background-color: #3f4257;
+  padding: 5px;
+  color: white;
+  font-family: 'Righteous', cursive;
+  font-size: 24px;
+  
+}
+.rightPaginatonButton {
+  margin-right: 2px;
+}
+.leftPaginatonButton {
+  margin-left: 2px;
 }
