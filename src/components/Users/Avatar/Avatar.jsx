@@ -4,15 +4,19 @@ import userPhoto from "../../../assets/images/user.jpg";
 import { NavLink } from "react-router-dom";
 
 
-const Avatar = ({smallPhoto, id}) => {
+const Avatar = ({ smallPhoto, id }) => {
   return (
-    <div>
+    <div className={styles.avatarArea}>
       <NavLink to={"/profile/" + id}>
-        <img
-          className={styles.avatar}
-          src={smallPhoto ? smallPhoto : userPhoto}
-        />
+        <div className={styles.avatar}>
+
+          <img
+
+            src={smallPhoto ? smallPhoto : userPhoto}
+          /> </div>
       </NavLink>
+
+
     </div>
   );
 };

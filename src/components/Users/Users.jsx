@@ -44,6 +44,7 @@ let Users = ({
         portionSize={portionSize}
         itemsCount={totalUsersCount}
         onPageChanged={onPageChanged}
+        isFetching={isFetching}
       /> 
       
     </div>

@@ -1,7 +1,21 @@
+.avatarArea {
+
+}
 .avatar {
-  height: 60px;
-  width: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+  height: 70px;
+  width: 70px;
+
   border-radius: 50%;
-  border: 2px solid #3f4257;
-  object-fit: cover;
+  background-size: cover;
+  border: 3px solid #3f4257;
+  
+}
+.avatar img {
+  margin-top: -11px;
+  margin-left: -20px;
+  width: 115px;
+  height: 115px;
+
 }
