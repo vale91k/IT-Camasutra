@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./User.module.css";
-
 import Avatar from "./Avatar/Avatar";
 import SubscribeButton from "./SubscribeButton/SubscribeButton";
 import UserInfoBar from "./UserInfoBar/UserInfoBar";
+
+
 let User = ({
   id,
   smallPhoto,
@@ -17,7 +18,10 @@ let User = ({
   return (
     <div key={id} className={styles.userBar}>
       <span className={styles.leftPart}>
-        <Avatar id={id} smallPhoto={smallPhoto} />
+        <Avatar
+          id={id}
+          smallPhoto={smallPhoto}
+        />
         <SubscribeButton
           followed={followed}
           followingInProgress={followingInProgress}
@@ -26,8 +30,10 @@ let User = ({
           follow={follow}
         />
       </span>
-
-      <UserInfoBar username={username} status={status} />
+      <UserInfoBar
+        username={username}
+        status={status}
+      />
     </div>
   );
 };

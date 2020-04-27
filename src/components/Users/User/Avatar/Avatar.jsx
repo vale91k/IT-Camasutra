@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Avatar.module.css";
-import userPhoto from "../../../assets/images/user.jpg";
+import userPhoto from "../../../../assets/images/user.jpg";
 import { NavLink } from "react-router-dom";
 
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Paginator from './../common/Paginator/Pagenator'
-import User from "./User";
+import User from "./User/User";
 import Preloader from "../common/Preloader/Preloader";
 import styles from './Users.module.css'
 
@@ -24,8 +24,9 @@ let Users = ({
      
       
 
-      {isFetching ? <Preloader /> : users.map((user) => (
-        <User
+      {isFetching ? <Preloader /> :
+        users.map((user) => (
+         <User
           id={user.id}
           smallPhoto={user.photos.small}
           followed={user.followed}
@@ -34,9 +35,9 @@ let Users = ({
           follow={follow}
           status={user.status}
           username={user.name}
-        />
-        
+         />
       ))}
+
       <Paginator
         onClick={onClick}
         currentPage={currentPage}
