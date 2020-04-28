@@ -5,7 +5,7 @@ import SubscribeButton from "./SubscribeButton/SubscribeButton";
 import UserInfoBar from "./UserInfoBar/UserInfoBar";
 
 
-let User = ({
+const User = ({
   id,
   smallPhoto,
   followed,
@@ -16,8 +16,8 @@ let User = ({
   unfollow,
 }) => {
   return (
-    <div key={id} className={styles.userBar}>
-      <span className={styles.leftPart}>
+    <div key={id} className={styles.userBar} >
+      <div className={styles.leftPart}>
         <Avatar
           id={id}
           smallPhoto={smallPhoto}
@@ -29,11 +29,13 @@ let User = ({
           unfollow={unfollow}
           follow={follow}
         />
-      </span>
-      <UserInfoBar
-        username={username}
-        status={status}
-      />
+      </div>
+      <div className={styles.rightPart}>
+        <UserInfoBar
+          username={username}
+          status={status}
+        />
+      </div>
     </div>
   );
 };

@@ -18,12 +18,8 @@ let Users = ({
   isFetching,
   portionSize
 }) => {
-
   return (
     <div className={styles.usersPage}>
-     
-      
-
       {isFetching ? <Preloader /> :
         users.map((user) => (
          <User
@@ -37,7 +33,6 @@ let Users = ({
           username={user.name}
          />
       ))}
-
       <Paginator
         onClick={onClick}
         currentPage={currentPage}
@@ -47,7 +42,6 @@ let Users = ({
         onPageChanged={onPageChanged}
         isFetching={isFetching}
       /> 
-      
     </div>
   );
 };

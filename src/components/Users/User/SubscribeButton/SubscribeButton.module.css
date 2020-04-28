@@ -1,0 +1,25 @@
+
+.subscribeBtn button{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    border: solid 2px #3f4257;
+    color: #3f4257;
+    background: #e1f3ff;
+    transition: .4s;;
+    top: -15px;
+}
+
+.subscribeBtn button:hover {
+    background: #3f4257;
+    color: #ff5e3a;
+}
+.subscribeBtn button:disabled {
+    background: gray;
+    color: rgb(97, 96, 96)
+}
+ button.followBtn:hover { 
+    background: #3f4257;
+    color: rgb(4, 255, 4);
+}

@@ -18,50 +18,56 @@ import { connect } from "react-redux";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 import Users from "./Users";
+import { useEffect } from "react";
 
 
-class UsersContainer extends React.Component {
-  componentDidMount() {
-    const { currentPage, pageSize } = this.props;
-    this.props.getUsersThunkCreator(currentPage,
-      pageSize
-    );
-  }
 
-  onPageChanged = (pageNumber) => {
-    const { pageSize } = this.props;
-    this.props.setNewPage(pageNumber,
+const UsersContainer = ({
+  isFetching,
+  users,
+  pageSize,
+  totalUsersCount,
+  currentPage,
+  follow,
+  unfollow,
+  followingInProgress,
+  portionSize,
+  getUsersThunkCreator,
+  setNewPage
+}) => {
+
+  useEffect(
+    () => {
+      getUsersThunkCreator(
+        currentPage,
+        pageSize
+      )
+    }, [currentPage, pageSize]
+  );
+
+  const onPageChanged = (pageNumber) => {
+    setNewPage(
+      pageNumber,
       pageSize
     );
   };
 
-  render() {
-    const { 
-      isFetching,
-      users,
-      pageSize,
-      totalUsersCount,
-      currentPage,
-      follow,
-      unfollow,
-      followingInProgress,
-      portionSize } = this.props
-    return (
-      <Users
-        isFetching={isFetching}
-        users={users}
-        pageSize={pageSize}
-        totalUsersCount={totalUsersCount}
-        currentPage={currentPage}
-        onPageChanged={this.onPageChanged}
-        follow={follow}
-        unfollow={unfollow}
-        followingInProgress={followingInProgress}
-        portionSize={portionSize}
-      />
-    );
-  }
+  return (
+    <Users
+      isFetching={isFetching}
+      users={users}
+      pageSize={pageSize}
+      totalUsersCount={totalUsersCount}
+      currentPage={currentPage}
+      onPageChanged={onPageChanged}
+      follow={follow}
+      unfollow={unfollow}
+      followingInProgress={followingInProgress}
+      portionSize={portionSize}
+    />
+  )
 }
+
 
 let mapStateToProps = (state) => {
   return {

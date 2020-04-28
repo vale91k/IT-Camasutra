@@ -2,3 +2,22 @@
 	height: 66px;
 	margin-top: -5px;	
 }
+.logobar { 
+	float: left;
+	background: linear-gradient(45deg, #ff5e3a, #3f4257, #3f4257);
+    background-size: 150% 150%;
+	animation: gradient 15s ease infinite;
+	border-bottom: 1px solid #000;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 30%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

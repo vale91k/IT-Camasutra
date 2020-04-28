@@ -6,18 +6,13 @@ import { NavLink } from "react-router-dom";
 
 const Avatar = ({ smallPhoto, id }) => {
   return (
-    <div className={styles.avatarArea}>
-      <NavLink to={"/profile/" + id}>
-        <div className={styles.avatar}>
-
+      <div className={styles.avatar}>
+        <NavLink to={"/profile/" + id}>
           <img
-
             src={smallPhoto ? smallPhoto : userPhoto}
-          /> </div>
-      </NavLink>
-
-
-    </div>
+          />
+        </NavLink>
+      </div>
   );
 };
 export default Avatar;

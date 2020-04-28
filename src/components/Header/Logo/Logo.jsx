@@ -6,10 +6,12 @@ import styles from './Logo.module.css'
 
 const Logo = (props) => {
 	return (
-		
-            <NavLink className={styles.logo} to='/profile'>
+		<div className={styles.logobar}>
+  <NavLink className={styles.logo} to='/profile'>
             <img  src={logo} alt={logoAlt} />
             </NavLink>
+        </div>
+          
 	
 	);
 };
