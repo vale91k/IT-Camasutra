@@ -115,7 +115,7 @@ const dialogsReducer = (state = initialState, action) => {
 };
 export const addMessageActionCreator = (newMessageBody, date, id = 1) => ({
 	type: ADD_MESSAGE,
-	newMessageBody,
+newMessageBody,
 	date,
 	id
 });
